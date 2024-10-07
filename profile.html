@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parth Gaikwad's Resume</title>
+    <style>
+        /* General styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Playfair Display', serif; /* Fancy font */
+            background-color: #000; /* Black background */
+            color: white; /* White text */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            scroll-behavior: smooth; /* Smooth scrolling */
+        }
+    
+        .container {
+            width: 100%;
+            height: 200vh; /* Double the viewport height for two-page effect */
+            scroll-snap-type: y mandatory; /* Snap scroll behavior */
+            scroll-behavior: smooth;
+            overflow-y: scroll; /* Enable vertical scrolling */
+        }
+    
+        .section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Full viewport height */
+            padding: 20px;
+            box-sizing: border-box;
+            scroll-snap-align: start; /* Align sections to start */
+        }
+    
+        .section img {
+            width: 30%; /* Smaller images */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 10px; /* Rounded corners */
+            border: 5px solid white;
+            cursor: pointer;
+        }
+    
+        .section-text {
+            width: 50%; /* Adjust width as needed */
+            text-align: center; /* Center-align text */
+            font-size: 1.5em; /* Consistent font size */
+            margin: 0 auto; /* Center-align text container */
+        }
+    
+        .section-text h2 {
+            font-size: 2.5em; /* Consistent heading size */
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        .section-text h2 .gps-icon,
+        .section-text h2 .website-icon {
+            width: 20px; /* Size of the icons */
+            height: 20px;
+            margin-left: 10px; /* Space between text and icon */
+        }
+    
+        .section-text p {
+            font-size: 1.5em; /* Larger paragraph text */
+        }
+    
+        /* Alternating Layout */
+        .alternate-left {
+            flex-direction: row;
+            justify-content: flex-start;
+        }
+    
+        .alternate-left .section-text {
+            order: 1;
+            text-align: left; /* Left-align text for alternate-left */
+        }
+    
+        .alternate-left .section img {
+            order: 2;
+            margin-left: 20px; /* Space between text and image */
+        }
+    
+        .alternate-right {
+            flex-direction: row-reverse;
+            justify-content: flex-start;
+        }
+    
+        .alternate-right .section-text {
+            order: 2;
+            text-align: right; /* Right-align text for alternate-right */
+            margin-left: 20px; /* Space between text and image */
+        }
+    
+        .alternate-right .section img {
+            order: 1;
+            margin-right: 20px; /* Space between image and text */
+        }
+    
+        /* Button Styles */
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    
+        .button:hover {
+            background-color: #0056b3;
+        }
+    
+        /* Dropdown Menu */
+        .menu {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: #111;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+    
+        .menu select {
+            background-color: #222;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 18px;
+        }
+    
+        /* Modal for fullscreen image */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+    
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+    
+        .modal .close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+        }
+    
+        /* GPS Location and Website Icons */
+        .gps-icon {
+            width: 20px; /* Size of the GPS icon */
+            height: 20px; /* Size of the GPS icon */
+            vertical-align: middle;
+            cursor: pointer;
+            margin-left: 10px; /* Space between text and icon */
+        }
+    
+        .website-icon {
+            width: 20px; /* Size of the Website icon */
+            height: 20px; /* Size of the Website icon */
+            vertical-align: middle;
+            cursor: pointer;
+            margin-left: 10px; /* Space between icons */
+        }
+    
+        /* Email and LinkedIn Icons */
+        .social-icon {
+            width: 10px; /* Half the size of GPS icon */
+            height: 10px; /* Half the size of GPS icon */
+            vertical-align: middle;
+            cursor: pointer;
+            margin-left: 10px; /* Space between text and icon */
+        }
+    
+        /* Thanks for Visiting Section */
+        #thanks-section {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Full viewport height */
+            width: 100vw; /* Full viewport width */
+            position: relative; /* Ensure proper alignment of content */
+        }
+    
+        #thanks-section .section-text {
+            text-align: center; /* Center-align text */
+            width: 100%; /* Full width */
+            margin: 0 auto; /* Center-align text container */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center horizontally */
+            justify-content: center; /* Center vertically */
+        }
+    
+        #thanks-section .section-text h2, #thanks-section .section-text p {
+            margin: 10px 0; /* Space between text elements */
+        }
+    
+        /* Additional styles for "My Projects" Section */
+        #projects-section .section-text {
+            text-align: right; /* Right-align text for alternate-right layout */
+        }
+    
+        /* Contact Section */
+        #contact-section .section-text {
+            text-align: center; /* Center-align text */
+        }
+    
+        #contact-section .section-text img {
+            width: 150px; /* Adjust size as needed */
+            height: auto;
+            display: block;
+            margin: 20px auto; /* Center-align image with margin */
+        }
+    
+        /* Achievements Section */
+        #achievements-section .section-text {
+            text-align: center; /* Center-align text */
+            width: 100%; /* Full width */
+            margin: 0; /* Remove default margins */
+        }
+        /* Navigation Bar Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #111; /* Background color of the navbar */
+    display: flex;
+    justify-content: space-around; /* Space items evenly */
+    padding: 10px 0; /* Padding for the navbar */
+    z-index: 1000; /* Keep the navbar above other elements */
+}
+
+.navbar a {
+    color: white; /* Text color */
+    text-decoration: none; /* Remove underline */
+    font-size: 18px; /* Font size for links */
+    padding: 10px 15px; /* Padding for links */
+    transition: background-color 0.3s; /* Transition for hover effect */
+}
+
+.navbar a:hover {
+    background-color: #007bff; /* Change background on hover */
+    border-radius: 5px; /* Rounded corners on hover */
+}
+
+    </style>
+    
+</head>
+<body id="start-section">
+
+   <!-- Navigation Bar -->
+<div class="navbar">
+    <a href="#parth-section">Parth Gaikwad</a>
+    <a href="#vu-section">Vishwakarma University(UG)</a>
+    <a href="#certificates-section">Certificates</a>
+    <a href="#projects-section">My Projects</a>
+    <a href="#twelfth-section">12th Grade</a>
+    <a href="#tenth-section">10th Grade</a>
+    <a href="#arthakshar-section">My Book</a>
+    <a href="#shegaon-section">Hometown</a>
+    <a href="#contact-section">Contact</a>
+</div>
+
+
+    <div class="container">
+        <!-- First Section - Parth's Image and Details -->
+        <div class="section alternate-left" id="parth-section">
+            <img src="PVG 2.jpg"Parth Gaikwad" onclick="openModal(this)">
+            <div class="section-text">
+                <h2>Parth Gaikwad</h2>
+                <p>Software Developer with a passion for creating efficient and scalable web applications. Experienced in various programming languages and technologies.</p>
+            </div>
+        </div>
+<!-- Fifth Section - Vishwakarma University -->
+<div class="section alternate-left" id="vu-section">
+    <img src="VU.png" alt="Vishwakarma University" onclick="openModal(this)">
+    <div class="section-text">
+        <h2>Vishwakarma University <a href="https://www.google.com/maps?q=Vishwakarma+University,+Pune,+India" target="_blank"><img src="gps.png" alt="GPS Icon" class="gps-icon"></a> <a href="https://vupune.ac.in" target="_blank"><img src="WEB.jpg" alt="Website Icon" class="website-icon"></a></h2>
+        <p>Bachelor's degree in Computer Engineering from Vishwakarma University.</p>
+        <a href="vu.html" class="button">More Details</a> <!-- Button Added -->
+    </div>
+</div>
+
+
+<!-- Certificates Section -->
+<div class="section alternate-right" id="certificates-section">
+    <div class="section-text">
+        <h2>Certificates</h2>
+        <p>Various certificates in programming and web development.</p>
+        <a href="certificates.html" class="button">More Details</a> <!-- Button Added -->
+    </div>
+    <img src="CERTIFICATE.png" alt="Certificates">
+</div>
+<div class="section alternate-left" id="projects-section">
+    <img src="project.jpeg" alt="My Projects" >
+    <div class="section-text">
+        <h2>My Projects</h2>
+        <p>Details about various projects I have worked on.</p>
+        <a href="myproject.html" class="button">More Details</a> <!-- Button Added -->
+    </div>
+</div>
+<!-- Fourth Section - 12th Grade Education -->
+<div class="section alternate-right" id="twelfth-section">
+    <div class="section-text">
+        <h2>12th Grade Education</h2>
+        <p>Completed 12th in Science stream from Late Jyoti Janolkar Vidyalaya, Akola.</p>
+        <a href="12th-grade.html" class="button">More Details</a> <!-- Button Added -->
+    </div>
+    <img src="AKOLA.jpeg" alt="12th Grade" onclick="openModal(this)">
+</div>
+<!-- Third Section - 10th Grade Education -->
+<div class="section alternate-left" id="tenth-section">
+    <img src="SCHOOL.jpeg" alt="10th Grade" onclick="openModal(this)">
+    <div class="section-text">
+        <h2>10th Grade Education</h2>
+        <p>Passed 10th from Shri Gajanan Maharaj English Medium School, Shegaon.</p>
+        <a href="10th-grade.html" class="button">More Details</a> <!-- Button Added -->
+    </div>
+</div>
+
+        <!-- Achievements Section -->
+        <div class="section alternate-right" id="achievements-section">
+            <div class="section-text">
+                <h2>Achievements</h2>
+                <p>Won various coding competitions and received academic awards.</p>
+            </div>
+        </div>
+
+       <!-- Arthakshar: My First Book Published -->
+<div class="section alternate-left" id="arthakshar-section">
+    <img src="Arthakshar.jpg" alt="Arthakshar Book" onclick="openModal(this)">
+    <div class="section-text">
+        <h2>Arthakshar: My First Book Published</h2>
+        <p>Published a book titled "Arthakshar", it is my debut poetry collection, touching on relationships, dreams, and life's intricacies. Launched during a literary conference in Shegaon, it reflects Gaikwad's unique perspective on everyday occurrences.</p>
+        <a href="arthakshar.html" class="button">More Details</a> <!-- Button Added -->
+    </div>
+</div>
+
+        <!-- Second Section - Shegaon GPS Location -->
+        <div class="section alternate-right" id="shegaon-section">
+            <div class="section-text">
+                <h2>Shegaon <a href="https://www.google.com/maps?q=Shegaon,+Maharashtra,+India" target="_blank"><img src="gps.png" alt="GPS Icon" class="gps-icon"></a></h2>
+                <p>Location in Maharashtra, India.</p>
+            </div>
+            <img src="Shegaon.jpeg" alt="Shegaon" onclick="openModal(this)">
+        </div>
+
+
+
+
+
+
+
+<div class="section alternate-left" id="contact-section">
+    <div class="section-text">
+      <img src="Parth.jpg" alt="Contact" onclick="openModal(this)">
+      <h2>Contact</h2>
+      <p>Official Email: parthofficial0506@gmail.com</p>
+      <p>College Email: 202200285@vupune.ac.in</p>
+      <p>Phone: +91 9763200453</p>
+      <p>
+        <a href="https://www.linkedin.com/in/parth-gaikwad-32a178280?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">
+          <img src="linkedin.png" alt="LinkedIn Icon" class="social-icon">
+        </a>
+        <a href="mailto:parthofficial0506@gmail.com" onclick="copyEmail()">
+          <img src="EMAIL.webp" alt="Email Icon" class="social-icon">
+        </a>
+      </p>
+      
+    </div>
+  </div>
+
+
+
+  <script>
+    function openModal(img) {
+        // Create the modal
+        const modal = document.createElement('div');
+        modal.className = 'modal';
+        modal.onclick = function() {
+            document.body.removeChild(modal); // Close the modal on click
+        };
+        const modalImg = document.createElement('img');
+        modalImg.src = img.src; // Set the source to the clicked image
+        modal.appendChild(modalImg);
+
+        const closeButton = document.createElement('span');
+        closeButton.className = 'close';
+        closeButton.innerHTML = '&times;'; // Close icon
+        closeButton.onclick = function() {
+            document.body.removeChild(modal); // Close the modal on click
+        };
+        modal.appendChild(closeButton);
+
+        document.body.appendChild(modal); // Append modal to body
+    }
+
+    function copyEmail() {
+        const email = 'parthofficial0506@gmail.com';
+        navigator.clipboard.writeText(email)
+            .then(() => alert('Email copied to clipboard!'))
+            .catch(err => console.error('Could not copy email: ', err));
+    }
+</script>
+</body>
+</html>
+
