@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificates Details</title>
+    <style>
+        /* General styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif; /* Updated to a more professional font */
+            background-color: #000;
+            color: white;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centering content */
+        }
+
+        h1 {
+            font-size: 3.5em; /* Increased heading size */
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .certificate-section {
+            display: flex;
+            align-items: center; /* Aligning images and text in the center */
+            justify-content: space-between; /* Proper spacing */
+            margin-bottom: 40px;
+            width: 100%;
+            max-width: 1200px; /* Limiting width for better alignment */
+        }
+
+        img {
+            width: 40%; /* Adjusted for better alignment */
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+            border: 5px solid white;
+            margin: 20px;
+        }
+
+        .certificate-details {
+            flex: 1;
+            text-align: left; /* Align text to the left for better readability */
+            margin-left: 20px; /* Added margin for spacing */
+        }
+
+        .certificate-details h2 {
+            font-size: 2.5em; /* Increased subtitle size */
+            margin-bottom: 20px;
+        }
+
+        .certificate-details p {
+            font-size: 1.5em; /* Increased paragraph size */
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Main Heading -->
+        <h1>Certificates</h1>
+
+        <!-- Professional Certificate Section -->
+        <div class="certificate-section">
+            <img src="professional.jpg" alt="Professional Certificate">
+            <div class="certificate-details">
+                <h2>Professional Certificate</h2>
+                <p>Recognitions and credentials in various professional programming and technology fields.</p>
+                <a href="professional_certificates.html" class="button">View Professional Certificates</a>
+            </div>
+        </div>
+
+        <!-- Learning Certificate Section -->
+        <div class="certificate-section">
+            <img src="course.png" alt="Learning Certificate">
+            <div class="certificate-details">
+                <h2>Learning Certificates</h2>
+                <p>Certifications earned through online courses, workshops, and learning platforms.</p>
+                <a href="learning_certificates.html" class="button">View Learning Certificates</a>
+            </div>
+        </div>
+
+        <!-- Back to Profile Button -->
+        <div style="text-align: center;">
+            <a href="profile.html" class="button">Back to Profile</a>
+        </div>
+    </div>
+</body>
+</html>

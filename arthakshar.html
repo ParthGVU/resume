@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arthakshar: My First Book Published</title>
+    <style>
+        /* General styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Playfair Display', serif;
+            background-color: #000;
+            color: white;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        /* Styling for the book image */
+        .book-image-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .book-image-container img {
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            border: 5px solid white;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .book-image-container img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Modal for zooming image */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+
+        /* Close button for modal */
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-size: 50px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Styling for the iframe */
+        .pdf-container {
+            width: 100%;
+            height: 80vh;
+            margin: 0 auto;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Book Image -->
+        <div class="book-image-container">
+            <img src="Arthakshar.jpg" alt="Arthakshar Book" id="book-image">
+        </div>
+
+        <!-- Modal for zooming image -->
+        <div class="modal" id="modal">
+            <span class="close" id="close-modal">&times;</span>
+            <img id="modal-image">
+        </div>
+
+        <!-- Book Heading -->
+        <h1>Arthakshar: My First Book Published</h1>
+        <p>Published by Shri Sainath Prakashan, *Arthakshar* is my debut poetry collection, touching on relationships, dreams, and life's intricacies. Launched during a literary conference in Shegaon, it reflects Gaikwad's unique perspective on everyday occurrences.</p>
+
+        <!-- PDF Viewer Button -->
+        <div class="button-container">
+            <button class="button" id="view-book">View Book</button>
+        </div>
+
+        <!-- PDF Viewer Modal -->
+        <div class="modal" id="pdf-modal">
+            <span class="close" id="close-pdf-modal">&times;</span>
+            <div class="pdf-container">
+                <iframe src="Arthakshar.pdf"></iframe>
+            </div>
+        </div>
+
+        <!-- Publication Ceremony Button -->
+        <div class="button-container">
+            <a href="ceremony.html" class="button" id="view-ceremony">View Publication Ceremony Details</a>
+        </div>
+
+        <!-- Back to Profile Button -->
+        <div class="button-container">
+            <a href="profile.html" class="button">Back to Profile</a>
+        </div>
+    </div>
+
+    <script>
+        // Get the modal and image elements
+        var modal = document.getElementById("modal");
+        var modalImage = document.getElementById("modal-image");
+        var bookImage = document.getElementById("book-image");
+        var closeModal = document.getElementById("close-modal");
+
+        var pdfModal = document.getElementById("pdf-modal");
+        var closePdfModal = document.getElementById("close-pdf-modal");
+        var viewBookButton = document.getElementById("view-book");
+
+        // When the user clicks the book image, open the modal and show the image
+        bookImage.onclick = function() {
+            modal.style.display = "flex";
+            modalImage.src = this.src;
+        }
+
+        // When the user clicks the close button, close the modal
+        closeModal.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // View Book button functionality
+        viewBookButton.onclick = function() {
+            pdfModal.style.display = "flex";
+        }
+
+        // Close PDF modal
+        closePdfModal.onclick = function() {
+            pdfModal.style.display = "none";
+        }
+    </script>
+</body>
+</html>

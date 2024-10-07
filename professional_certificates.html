@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Certificates</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: white;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .certificate-section {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .certificate-section img {
+            width: 40%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+            border: 5px solid white;
+            margin: 20px;
+            cursor: pointer; 
+        }
+
+        .certificate-details {
+            flex: 1;
+            text-align: left;
+            margin-left: 20px;
+        }
+
+        .certificate-details h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .certificate-details p {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .fullscreen-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: none; /* Hidden by default */
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .fullscreen-overlay img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 2em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Professional Certificates</h1>
+
+        <div class="certificate-section">
+            <img src="certificates/PROF/Predictive Analytics Essential Training.png" alt="Certificate 1" onclick="openFullscreen(this.src);">
+            <div class="certificate-details">
+                <h2>Predictive Analytics Essential Training: Data Mining</h2>
+                <p>Top skills covered : CRISP-DM, Data Mining, Predictive Analytics</p>
+            </div>
+        </div>
+
+        <div class="certificate-section">
+            <img src="certificates/PROF/Full Sack .png" alt="Certificate 2" onclick="openFullscreen(this.src);">
+            <div class="certificate-details">
+                <h2>Become a Full-Stack Web Developer</h2>
+                <p>Top skills covered : Web Development, Full-Stack Development</p>
+            </div>
+        </div>
+        <div class="certificate-section">
+            <img src="certificates/PROF/SQL Essential Training.png" alt="Certificate 3" onclick="openFullscreen(this.src);">
+            <div class="certificate-details">
+                <h2>SQL Essential Training</h2>
+                <p>Top skills covered : SQL</p>
+            </div>
+        </div>
+        <div class="certificate-section">
+            <img src="certificates/PROF/Python Institute.png" alt="Certificate 4" onclick="openFullscreen(this.src);">
+            <div class="certificate-details">
+                <h2>OpenEDG Python Institute:Programming with Python Professional Certificate</h2>
+                <p>Top skills covered : Python (Programming Language), Object-Oriented Programming (OOP)</p>
+            </div>
+        </div>
+        <div class="button-container">
+            <a href="certificates.html" class="button">Back to Certificates Page</a>
+            <a href="profile.html" class="button">Back to Main Menu</a>
+        </div>
+
+    </div>
+
+    <div class="fullscreen-overlay" id="fullscreenOverlay">
+        <button class="close-button" onclick="closeFullscreen()">×</button>
+        <img id="fullscreenImage" src="" alt="Fullscreen Image">
+    </div>
+
+    <script>
+        function openFullscreen(src) {
+            document.getElementById('fullscreenImage').src = src;
+            document.getElementById('fullscreenOverlay').style.display = 'flex';
+        }
+
+        function closeFullscreen() {
+            document.getElementById('fullscreenOverlay').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

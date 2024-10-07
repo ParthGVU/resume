@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects</title>
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: #000;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .project {
+    margin-bottom: 40px;
+    display: flex;
+    align-items: flex-start; /* Align items at the start */
+    justify-content: space-between;
+    border: 1px solid #444;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #111;
+    position: relative;
+}
+
+.project img {
+    width: 30%; /* Fixed size for the image */
+    height: auto;
+    border-radius: 10px;
+    border: 3px solid #fff;
+    margin-right: 20px;
+}
+
+.project-details {
+    flex-grow: 1; /* Allow project details to take remaining space */
+    text-align: left;
+    min-width: 200px; /* Minimum width for better layout */
+    padding: 0 20px; /* Add padding for spacing */
+}
+
+.video-section {
+    width: 30%; /* Fixed size for the video */
+    flex-shrink: 0; /* Prevent the video from shrinking */
+}
+
+
+        .project h2 {
+            font-size: 2.2em;
+            margin: 10px 0;
+        }
+
+        .github-button, .description-button, .language-button {
+            display: inline-block;
+            padding: 5px 10px; 
+            font-size: 0.9em; 
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 5px; 
+            transition: background-color 0.3s;
+        }
+
+        .github-button {
+            background-color: #007bff;
+        }
+
+        .github-button:hover {
+            background-color: #0056b3;
+        }
+
+        .description-button {
+            background-color: #28a745;
+        }
+
+        .description-button:hover {
+            background-color: #218838;
+        }
+
+        .language-button {
+            background-color: #ffc107;
+        }
+
+        .language-button:hover {
+            background-color: #e0a800;
+        }
+
+       
+
+        .video-section video {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            border: 3px solid white;
+            cursor: pointer; 
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #222;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #fff;
+            width: 80%;
+            color: white;
+            font-size: 1.2em; /* Adjust font size for the modal content */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Fullscreen styles */
+        .fullscreen {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fullscreen img,
+        .fullscreen video {
+            width: 80%;
+            height: 80%;
+            border-radius: 10px;
+            border: 3px solid white;
+        }
+
+        .fullscreen .close-fullscreen {
+            color: #aaa;
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .image-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Increased space between images */
+    align-items: center; /* Center align images */
+}
+
+
+    .clickable-image {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.3s;
+    }
+
+    .clickable-image:hover {
+        transform: scale(1.05); /* Zoom effect on hover */
+    }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>My Projects</h1>
+        <div class="project">
+            <img src="P1/P1.png" alt="Project 1" onclick="openFullscreen('P1/P1.png')">
+            <div class="project-details">
+                <h2>User Authentication and OTP Verification System (With SQL injection testing screen)</h2>
+                <a href="https://github.com/ParthGVU/AS-PROJECT-.git" class="github-button" target="_blank">View on GitHub</a>
+                <button class="description-button" onclick="openModal('modal1')">Show Description</button>
+                <button class="language-button" onclick="openLanguageModal('languageModal1')">Used Languages</button>
+            </div>
+            <div class="video-section">
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/xBk_Ivc54qs?si=D4dXPgHbsamc3ueE" 
+                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
+            </div>
+            
+        </div>
+        
+
+      
+        <!-- Modal for Languages -->
+        <div id="languageModal1" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('languageModal1')">&times;</span>
+                <h2>Languages Used</h2>
+                <p>Python, HTML, CSS, JavaScript</p>
+            </div>
+        </div>
+
+        <div id="languageModal2" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('languageModal2')">&times;</span>
+                <h2>Languages Used</h2>
+                <p>Java, HTML, CSS, JavaScript</p>
+            </div>
+        </div>
+
+       <!-- Modal for Project 1 -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('modal1')">&times;</span>
+        <h2>User Authentication and OTP Verification System</h2>
+        <p>
+            The User Authentication and OTP Verification System is a web application designed to facilitate secure user registration, login, and verification through One-Time Passwords (OTPs). Built using Flask, this project serves as a foundational example of managing user data, implementing authentication mechanisms, and enhancing security practices in web applications.
+        </p>
+        <h3>Project Overview</h3>
+        <p>
+            With an intuitive user interface, this web application is made to handle user authentication and data collecting. The application, which was created with the help of Flask, a lightweight Python web framework, enables users to register, log in, and get an OTP for verification. An admin view is also included in the application to keep an eye on users and their information.
+        </p>
+        <h3>Objectives</h3>
+        <ol>
+            <li>User Management: To enable users to create accounts and securely manage them.</li>
+            <li>Authentication Process: To establish a strong login system with an additional OTP verification step for security.</li>
+            <li>Admin Dashboard: To give administrators an interface to view and manage user accounts.</li>
+            <li>Demonstration of Security Risks: To draw attention to the significance of secure coding by exposing vulnerabilities through an insecure login route.</li>
+        </ol>
+        <h3>Features</h3>
+        <ul>
+            <li><strong>User Registration:</strong> Users can sign up by filling out a registration form that collects essential information, including name, date of birth, email, password, and mobile number. The application utilizes SQLite as the database to store user data, ensuring persistence and easy retrieval.</li>
+            <li><strong>Secure Login:</strong> The login system allows users to enter their credentials. If the credentials match a registered user, the system sends an OTP to the user’s email.</li>
+            <li><strong>OTP Verification:</strong> Users must enter an OTP received via email to finish the login procedure.</li>
+            <li><strong>Admin Dashboard:</strong> Administrators may keep an eye on user activity by viewing a list of all registered users.</li>
+            <li><strong>Insecure Login Route:</strong> SQL injection vulnerabilities can be exploited on this route.</li>
+            <li><strong>Responsive Design:</strong> The web application employs Bootstrap for responsive design, ensuring a user-friendly experience across various devices.</li>
+        </ul>
+        <h3>Technical Stack</h3>
+        <ul>
+            <li>Backend: Flask (Python web framework)</li>
+            <li>Database: SQLite, managed via SQLAlchemy for ORM capabilities</li>
+            <li>Email Services: SMTP for sending OTPs</li>
+            <li>Frontend: HTML, CSS, JavaScript, utilizing Bootstrap for styling</li>
+        </ul>
+        <h3>Future Enhancements</h3>
+        <ul>
+            <li>Password Hashing: Use hashing techniques to store passwords in databases safely.</li>
+            <li>Enhanced Security Measures: Consider modules such as Flask-Security.</li>
+            <li>User Role Management: Extend the application to handle distinct user roles (e.g., admin, user).</li>
+        </ul>
+        <div class="image-gallery">
+            <img src="P1/P1.png"Image Description 1" class="clickable-image" onclick="openFullscreen('P1/P1.png')">
+            <img src="P1/SIGN UP.png" alt="Image Description 2" class="clickable-image" onclick="openFullscreen('P1/SIGN UP.png')">
+            <img src="P1/OTP.png" alt="Image Description 2" class="clickable-image" onclick="openFullscreen('P1/OTP.png')">
+            <img src="P1/OTP 2.png" alt="Image Description 2" class="clickable-image" onclick="openFullscreen('P1/OTP 2.png')">
+            <img src="P1/END.png" alt="Image Description 2" class="clickable-image" onclick="openFullscreen('P1/END.png')">
+        </div>
+    </div>
+</div>
+
+        <!-- Modal for Project 2 -->
+        <div id="modal2" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modal2')">&times;</span>
+                <h2>Project 2</h2>
+                <p>Details about Project 2 will go here.</p>
+            </div>
+        </div>
+
+        <button class="back-button" onclick="window.location.href='profile.html'">Back to Profile</button>
+
+    </div>
+
+    <!-- Fullscreen Image -->
+    <div id="fullscreenImg" class="fullscreen">
+        <span class="close-fullscreen" onclick="closeFullscreen()">&times;</span>
+        <img id="fullscreenImgContent" src="" alt="Fullscreen Image">
+    </div>
+
+    <!-- Fullscreen Video -->
+    <div id="fullscreenVideo" class="fullscreen">
+        <span class="close-fullscreen" onclick="closeFullscreenVideo()">&times;</span>
+        <video id="fullscreenVideoContent" controls></video>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+
+        function openLanguageModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        function openFullscreen(imgSrc) {
+            document.getElementById('fullscreenImg').style.display = "flex";
+            document.getElementById('fullscreenImgContent').src = imgSrc;
+        }
+
+        function closeFullscreen() {
+            document.getElementById('fullscreenImg').style.display = "none";
+        }
+
+        let currentVideo = null; // Variable to store the currently playing small-screen video
+
+function openFullscreenVideo(videoSrc) {
+    // Pause the original small-screen video
+    if (currentVideo) {
+        currentVideo.pause();
+    }
+
+    // Show the fullscreen video
+    document.getElementById('fullscreenVideo').style.display = "flex";
+    const fullscreenVideoContent = document.getElementById('fullscreenVideoContent');
+    fullscreenVideoContent.src = videoSrc;
+    fullscreenVideoContent.play();
+}
+
+function closeFullscreenVideo() {
+    // Hide the fullscreen video
+    document.getElementById('fullscreenVideo').style.display = "none";
+    const fullscreenVideoContent = document.getElementById('fullscreenVideoContent');
+
+    // Stop the fullscreen video and reset its source
+    fullscreenVideoContent.pause();
+    fullscreenVideoContent.src = "";
+
+    // Resume the original small-screen video from where it was paused
+    if (currentVideo) {
+        currentVideo.play();
+    }
+}
+
+// Capture the video click event to set the current video
+document.querySelectorAll('.video-section video').forEach(video => {
+    video.addEventListener('click', function () {
+        currentVideo = this; // Store the clicked video as the small-screen video
+        openFullscreenVideo(this.src); // Open the fullscreen with the video source
+    });
+});
+
+// Event listener for closing fullscreen using the close button
+document.querySelector('.close-fullscreen').addEventListener('click', closeFullscreenVideo);
+        
+    </script>
+
+</body>
+</html>

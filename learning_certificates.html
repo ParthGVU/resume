@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Certificates</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: white;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .certificate-section {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .certificate-section img {
+            width: 40%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+            border: 5px solid white;
+            margin: 20px;
+            cursor: pointer; /* Change cursor to pointer for clickable image */
+        }
+
+        .certificate-details {
+            flex: 1;
+            text-align: left;
+            margin-left: 20px;
+        }
+
+        .certificate-details h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .certificate-details p {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Fullscreen overlay styles */
+        .fullscreen-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: none; /* Hidden by default */
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .fullscreen-overlay img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 2em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Learning Certificates</h1>
+
+        <div class="certificate-section">
+            <img src="BIHGAMTON.png" alt="Certificate 1" onclick="openFullscreen(this.src);">
+            <div class="certificate-details">
+                <h2>Connetmonics 2023 - EDUFEST</h2>
+                <p>Top skills covered: Design Thinking</p>
+            </div>
+        </div>
+
+
+        <div class="certificate-section">
+            <img src="certificates/LEARNING/Applied Machine Learning.png" alt="Certificate 1" onclick="openFullscreen(this.src);">
+            <div class="certificate-details">
+                <h2>Applied Machine Learning: Algorithms</h2>
+                <p>Top skills covered: Machine Learning, Algorithms</p>
+            </div>
+        </div>
+
+        <div class="certificate-section">
+            <img src="certificates/LEARNING/CSS Essential Training.png" alt="Certificate 2" onclick="openFullscreen(this.src);">
+            <div class="certificate-details">
+                <h2>CSS Essential Training</h2>
+                <p>Top skills covered: Cascading Style Sheets (CSS)</p>
+            </div>
+        </div>
+        <div class="certificate-section">
+            <img src="certificates/LEARNING/DevOps Foundations.png" alt="Certificate 3" onclick="openFullscreen(this.src);">
+            <div class="certificate-details">
+                <h2>DevOps Foundations</h2>
+                <p>Top skills covered : DevOps</p>
+            </div>
+        </div>
+
+        <div class="certificate-section">
+            <img src="certificates/LEARNING/Git Essential Training.png" alt="Certificate 4" onclick="openFullscreen(this.src);">
+            <div class="certificate-details">
+                <h2>Git Essential Training</h2>
+                <p>Top skills covered : Git</p>
+            </div>
+        </div>
+        <div class="certificate-section">
+            <img src="certificates/LEARNING/HTML Essential Training.png" alt="Certificate 5" onclick="openFullscreen(this.src);">
+            <div class="certificate-details">
+                <h2>HTML Essential Training</h2>
+                <p>Top skills covered : HTML</p>
+            </div>
+        </div>
+
+        <div class="certificate-section">
+            <img src="certificates/LEARNING/Implementing a Data Warehouse.png" alt="Certificate 6" onclick="openFullscreen(this.src);">
+            <div class="certificate-details">
+                <h2>Implementing a Data Warehouse with SQL Server 2022</h2>
+                <p>Top skills covered : Data Warehousing, Microsoft SQL Server</p>
+            </div>
+        </div>
+        <div class="certificate-section">
+            <img src="certificates/LEARNING/Introduction to Data Warehouses.png" alt="Certificate 7" onclick="openFullscreen(this.src);">
+            <div class="certificate-details">
+                <h2>Introduction to Data Warehouses</h2>
+                <p>Top skills covered : Data Warehousing</p>
+            </div>
+        </div>
+
+        <div class="certificate-section">
+            <img src="certificates/LEARNING/JavaScript Essential Training.png" alt="Certificate 8" onclick="openFullscreen(this.src);">
+            <div class="certificate-details">
+                <h2>JavaScript Essential Training</h2>
+                <p>Top skills covered : JavaScript</p>
+            </div>
+        </div>
+        <div class="certificate-section">
+            <img src="certificates/LEARNING/Learning ECMAScript 6+ (ES6+).png" alt="Certificate 9" onclick="openFullscreen(this.src);">
+            <div class="certificate-details">
+                <h2>Learning ECMAScript 6+ (ES6+)</h2>
+                <p>Top skills covered : JavaScript, ECMAScript</p>
+            </div>
+        </div>
+
+        <div class="certificate-section">
+            <img src="certificates/LEARNING/Learning REST APIs.png" alt="Certificate 10" onclick="openFullscreen(this.src);">
+            <div class="certificate-details">
+                <h2>Learning REST APIs</h2>
+                <p>Top skills covered : REST APIs</p>
+            </div>
+        </div>
+        <div class="certificate-section">
+            <img src="certificates/LEARNING/Level Up_Python.png" alt="Certificate 11" onclick="openFullscreen(this.src);">
+            <div class="certificate-details">
+                <h2>Level Up: Python</h2>
+                <p>Top skills covered : Python (Programming Language)</p>
+            </div>
+        </div>
+
+        <div class="certificate-section">
+            <img src="certificates/LEARNING/Machine Learning and AI.png" alt="Certificate 12" onclick="openFullscreen(this.src);">
+            <div class="certificate-details">
+                <h2>Python Object-Oriented Programming</h2>
+                <p>Top skills covered : Python (Programming Language), Object-Oriented Programming (OOP)</p>
+            </div>
+        </div>
+        <div class="certificate-section">
+            <img src="certificates/LEARNING/Machine Learning with Python.png" alt="Certificate 13" onclick="openFullscreen(this.src);">
+            <div class="certificate-details">
+                <h2>Machine Learning and AI Foundations: Clustering and Association</h2>
+                <p>Top skills covered : Machine Learning, Artificial Intelligence (AI)</p>
+            </div>
+        </div>
+
+        <div class="certificate-section">
+            <img src="certificates/LEARNING/Node.js Essential Training.png" alt="Certificate 14" onclick="openFullscreen(this.src);">
+            <div class="certificate-details">
+                <h2>Machine Learning with Python: k-Means Clustering</h2>
+                <p>Top skills covered : k-means clustering, Machine Learning, Python (Programming Language)</p>
+            </div>
+        </div>
+        <div class="certificate-section">
+            <img src="certificates/LEARNING/NoSQL Essential Training.png"  alt="Certificate 15" onclick="openFullscreen(this.src);">
+            <div class="certificate-details">
+                <h2>Node.js Essential Training</h2>
+                <p>Top skills covered : Node.js</p>
+            </div>
+        </div>
+
+        <div class="certificate-section">
+            <img src="certificates/LEARNING/Predictive Analytics Essential.png" alt="Certificate 16" onclick="openFullscreen(this.src);">
+            <div class="certificate-details">
+                <h2>NoSQL Essential Training</h2>
+                <p>Top skills covered : NoSQL</p>
+            </div>
+        </div>
+        <div class="certificate-section">
+            <img src="certificates/LEARNING/Python Essential Training.png" alt="Certificate 17" onclick="openFullscreen(this.src);">
+            <div class="certificate-details">
+                <h2>Predictive Analytics Essential Training: Data Mining</h2>
+                <p>Top skills covered : CRISP-DM, Data Mining, Predictive Analytics</p>
+            </div>
+        </div>
+
+        <div class="certificate-section">
+            <img src="certificates/LEARNING/Python Object-Oriented.png" alt="Certificate 18" onclick="openFullscreen(this.src);">
+            <div class="certificate-details">
+                <h2>Python Essential Training</h2>
+                <p>Top skills covered : Python (Programming Language)</p>
+            </div>
+        </div>
+        <div class="certificate-section">
+            <img src="certificates/LEARNING/React.js Essential Training.png" alt="Certificate 19" onclick="openFullscreen(this.src);">
+            <div class="certificate-details">
+                <h2>React.js Essential Training</h2>
+                <p>Top skills covered : React.js</p>
+            </div>
+        </div>
+
+        <div class="certificate-section">
+            <img src="certificates/LEARNING/Search Techniques for Web.png" alt="Certificate 20" onclick="openFullscreen(this.src);">
+            <div class="certificate-details">
+                <h2>Search Techniques for Web Developers</h2>
+                <pTop skills covered : Web Application Development, Search</p>
+            </div>
+        </div>
+        <div class="certificate-section">
+            <img src="certificates/LEARNING/SQL Essential Training.png" alt="Certificate 21" onclick="openFullscreen(this.src);">
+            <div class="certificate-details">
+                <h2>SQL Essential Training</h2>
+                <p>Top skills covered : SQL</p>
+            </div>
+        </div>
+
+   
+
+        <!-- Back to Certificates Page and Back to Main Menu -->
+        <div class="button-container">
+            <a href="certificates.html" class="button">Back to Certificates Page</a>
+            <a href="profile.html" class="button">Back to Main Menu</a>
+        </div>
+
+    </div>
+
+    <!-- Fullscreen overlay -->
+    <div class="fullscreen-overlay" id="fullscreenOverlay">
+        <button class="close-button" onclick="closeFullscreen()">×</button>
+        <img id="fullscreenImage" src="" alt="Fullscreen Image">
+    </div>
+
+    <script>
+        function openFullscreen(src) {
+            document.getElementById('fullscreenImage').src = src;
+            document.getElementById('fullscreenOverlay').style.display = 'flex';
+        }
+
+        function closeFullscreen() {
+            document.getElementById('fullscreenOverlay').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

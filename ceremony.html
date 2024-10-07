@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publication Ceremony Details</title>
+    <style>
+        /* General styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Playfair Display', serif;
+            background-color: #000;
+            color: white;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            text-align: center;
+        }
+
+        .container {
+            width: 100%;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .photo-container {
+            margin-top: 20px;
+        }
+
+        .photo-container img {
+            width: 80%;
+            max-width: 500px;
+            height: auto;
+            margin: 10px 0;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border: 2px solid white; /* White border */
+            box-sizing: border-box; /* Include padding/border in width */
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .news-article {
+            font-size: 2em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        /* Fullscreen styles */
+        .fullscreen-img {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2em;
+            color: white; /* Set the color to white */
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function openFullscreen(img) {
+            const fullImg = document.createElement('img');
+            fullImg.src = img.src;
+            fullImg.className = 'fullscreen-img';
+
+            const closeButton = document.createElement('button');
+            closeButton.innerHTML = '&times;';
+            closeButton.className = 'close-btn';
+
+            closeButton.onclick = function(event) {
+                event.stopPropagation(); // Prevent the click from also triggering the image click
+                document.body.removeChild(fullImg);
+                document.body.removeChild(closeButton);
+            };
+
+            fullImg.onclick = function() {
+                document.body.removeChild(fullImg);
+                document.body.removeChild(closeButton);
+            };
+
+            document.body.appendChild(fullImg);
+            document.body.appendChild(closeButton);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Parth Gaikwad's Poetry Collection 'Arthakshar' Published</h1>
+        <div class="ceremony-description">
+            <p>Parth Gaikwad's Poetry Collection 'Arthakshar' Published  
+
+                The 'State-level Literary Conference and Book Publication Ceremony' was arranged by the Kavyasagar Sahitya Manch, Shegaon, and took place at Mathura Lawn during September 15. The Kavyasagar Sahitya Manch President Vinayak Kale, Secretary Adv. Bharat Lahulkar, Treasurer Shriram Wagh, and other members oversaw the ceremony.
+                Prestigious figures such as senior poet Chandrashekhar Pandit, Pushparaj Gawande (Member of Maharashtra State Literature and Cultural Board), businessman Vinayak Bharambe, senior poet Abasaheb Kadu from Amravati, satirist Sanjay Aher from Nashik, Varhadi poetess Sadhanatai Kalbande from Akot, and Dr. Madhavi Gaikwad unveiled the collection, titled Arthakshar. Veteran critic Da. Go. Kale, H.B.P. Dr. Dnyaneshwar Mirge, and Dr. Premchand Pandit also graced the occasion.
+                It is clear that Arthakshar was written by a youthful poet who was driven by a particular passion. In this creative endeavor, 19-year-old Parth Vinod Gaikwad, a third-year engineering student at Vishwakarma University Pune, has encapsulated his experiences and surroundings. There aren't many people who start writing poetry at this age, therefore his efforts should encourage other students.
+                
+                This poetry collection's distinctive feature is its multiplicity of issues, which may make Parth one of the first to examine such a range. Subjects like Chhatrapati Shivaji Maharaj, teachers, relationships, life, the world, objectives, dreams, freedom, and the dualities of happiness and sadness are all vividly brought to life in his poems. Parth's attempt to give words a deeper meaning is reflected in the title, Arthakshar, which is his debut piece of writing.
+                
+                Lalita Puranik, a renowned publisher from Shri Sainath Prakashan in Nagpur who has worked in the publishing field for thirty years, released the collection. Prakash Gayki organized the publication celebration, which was attended by notable poets and writers from Shegaon's literary circles as well as Maharashtra.</p>
+        </div>
+        
+        <div class="photo-container">
+            <img src="pustak_prakashan/1.jpg" onclick="openFullscreen(this)">
+            <img src="pustak_prakashan/4.jpg" onclick="openFullscreen(this)">
+        </div>
+
+        <div class="news-article">News Article</div>
+
+        <div class="photo-container">
+            <img src="pustak_prakashan/2.jpg" onclick="openFullscreen(this)">
+            <img src="pustak_prakashan/3.jpg" onclick="openFullscreen(this)">
+            <img src="pustak_prakashan/5.jpg" onclick="openFullscreen(this)">
+            <img src="pustak_prakashan/6.jpg" onclick="openFullscreen(this)">
+            <img src="pustak_prakashan/7.jpg" onclick="openFullscreen(this)">
+        </div>
+
+        <!-- Buttons to navigate back -->
+        <div class="button-container">
+            <a href="arthakshar.html" class="button">Back to Book Page</a>
+            <a href="profile.html" class="button">Resume</a>
+        </div>
+    </div>
+</body>
+</html>

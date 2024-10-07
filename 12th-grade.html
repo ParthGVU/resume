@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12th Grade Details</title>
+    <style>
+        /* General styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Playfair Display', serif;
+            background-color: #000;
+            color: white;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 100%;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .heading h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .heading p {
+            font-size: 1.5em;
+        }
+
+        .image-text-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 50px;
+        }
+
+        .image-text-container img {
+            width: 50%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+            border: 5px solid white;
+            margin-right: 30px;
+            cursor: pointer; /* Change cursor to pointer */
+        }
+
+        .image-text-container .description {
+            flex: 1;
+        }
+
+        .description h2 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .description p {
+            font-size: 1.3em;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Fullscreen overlay styles */
+        .fullscreen-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: none; /* Hidden by default */
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .fullscreen-overlay img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 2em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Main Heading -->
+        <div class="heading">
+            <h1>12th Grade Education</h1>
+            <p>Completed 12th in Science stream from Late Jyoti Janolkar Vidyalaya, Akola.</p>
+        </div>
+
+        <!-- First Image and Description -->
+        <div class="image-text-container">
+            <img src="HSC  CERTIFICATE.png" alt="12th Grade Education" onclick="openFullscreen(this.src)">
+            <div class="description">
+                <h2>Statement of Marks [12 th]</h2>
+                <p>Successfully completed 12th grade with specialization in the science stream, scoring excellent marks in physics, chemistry, and mathematics from Late Jyoti Janolkar Vidyalaya, Akola.</p>
+            </div>
+        </div>
+
+        <!-- Second Image and Description -->
+        <div class="image-text-container">
+            <img src="school_leaving_certificate_12th.jpg" alt="12th Grade School Leaving Certificate" onclick="openFullscreen(this.src)">
+            <div class="description">
+                <h2>12th Grade Certificate</h2>
+                <p>Official school leaving certificate received after completion of 12th grade at Late Jyoti Janolkar Vidyalaya, Akola.</p>
+            </div>
+        </div>
+
+        <!-- Back to Profile Button -->
+        <div class="button-container">
+            <a href="profile.html" class="button">Back to Profile</a>
+        </div>
+    </div>
+
+    <!-- Fullscreen overlay -->
+    <div class="fullscreen-overlay" id="fullscreenOverlay">
+        <button class="close-button" onclick="closeFullscreen()">×</button>
+        <img id="fullscreenImage" src="" alt="Fullscreen Image">
+    </div>
+
+    <script>
+        function openFullscreen(src) {
+            document.getElementById('fullscreenImage').src = src;
+            document.getElementById('fullscreenOverlay').style.display = 'flex';
+        }
+
+        function closeFullscreen() {
+            document.getElementById('fullscreenOverlay').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
