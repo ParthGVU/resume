@@ -215,122 +215,634 @@
     .clickable-image:hover {
         transform: scale(1.05); /* Zoom effect on hover */
     }
+    /* Home Page */
+.home-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    background-color: #000;
+}
+
+.home-page h1 {
+    font-size: 3.5em;
+}
+
+.home-btn {
+    padding: 15px 50px;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    transition: 0.3s;
+}
+
+.home-btn:hover {
+    background-color: #0056b3;
+}
+/* Description image gallery */
+.desc-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.desc-gallery img {
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border: 2px solid #fff;
+}
+
+.desc-gallery img:hover {
+    transform: scale(1.08);
+}
+
+/* Fullscreen Image Viewer */
+#imgViewer {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    justify-content: center;
+    align-items: center;
+}
+
+#imgViewer img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 12px;
+    border: 3px solid #fff;
+}
+
+#imgViewer .close-viewer {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 35px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+/* Home Page Buttons with Icons */
+.home-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+}
+
+.home-btn {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 40px;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    transition: 0.3s;
+    width: 320px;
+    justify-content: center;
+}
+
+.home-btn img {
+    width: 32px;
+    height: 32px;
+}
+
+.home-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Back button on Home */
+.home-back {
+    background-color: #6c757d;
+}
+
+.home-back:hover {
+    background-color: #5a6268;
+}
+@media (max-width: 768px) { body { font-size: 14px; } }
+
+
     </style>
 </head>
 <body>
+<div id="homePage" class="home-page">
+    <h1>My Work</h1>
 
-    <div class="container">
-        <h1>My Projects</h1>
-        <div class="project">
-            <img src="P1/P1.png" alt="Project 1" onclick="openFullscreen('P1/P1.png')">
-            <div class="project-details">
-                <h2>User Authentication and OTP Verification System (With SQL injection testing screen)</h2>
-                <a href="https://github.com/ParthGVU/AS-PROJECT-.git" class="github-button" target="_blank">View on GitHub</a>
-                <button class="description-button" onclick="openModal('modal1')">Show Description</button>
-                <button class="language-button" onclick="openLanguageModal('languageModal1')">Used Languages</button>
-            </div>
-            <div class="video-section">
-                <iframe width="100%" height="200" src="https://www.youtube.com/embed/xBk_Ivc54qs?si=D4dXPgHbsamc3ueE" 
-                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen></iframe>
-            </div>
-            
-        </div>
-        
+    <div class="home-actions">
+        <button class="home-btn" onclick="showProjects()">
+            <img src="/project.jpeg" alt="Projects">
+            Projects
+        </button>
 
-      
-        <!-- Modal for Languages -->
-        <div id="languageModal1" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal('languageModal1')">&times;</span>
-                <h2>Languages Used</h2>
-                <p>Python, HTML, CSS, JavaScript</p>
-            </div>
-        </div>
+        <button class="home-btn" onclick="goToInternship()">
+            <img src="/INTERNSHIPS.jpeg" alt="Internship">
+            Internship
+        </button>
 
-        <div id="languageModal2" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal('languageModal2')">&times;</span>
-                <h2>Languages Used</h2>
-                <p>Java, HTML, CSS, JavaScript</p>
-            </div>
-        </div>
-
-       <!-- Modal for Project 1 -->
-<div id="modal1" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('modal1')">&times;</span>
-        <h2>User Authentication and OTP Verification System</h2>
-        <p>
-            The User Authentication and OTP Verification System is a web application designed to facilitate secure user registration, login, and verification through One-Time Passwords (OTPs). Built using Flask, this project serves as a foundational example of managing user data, implementing authentication mechanisms, and enhancing security practices in web applications.
-        </p>
-        <h3>Project Overview</h3>
-        <p>
-            With an intuitive user interface, this web application is made to handle user authentication and data collecting. The application, which was created with the help of Flask, a lightweight Python web framework, enables users to register, log in, and get an OTP for verification. An admin view is also included in the application to keep an eye on users and their information.
-        </p>
-        <h3>Objectives</h3>
-        <ol>
-            <li>User Management: To enable users to create accounts and securely manage them.</li>
-            <li>Authentication Process: To establish a strong login system with an additional OTP verification step for security.</li>
-            <li>Admin Dashboard: To give administrators an interface to view and manage user accounts.</li>
-            <li>Demonstration of Security Risks: To draw attention to the significance of secure coding by exposing vulnerabilities through an insecure login route.</li>
-        </ol>
-        <h3>Features</h3>
-        <ul>
-            <li><strong>User Registration:</strong> Users can sign up by filling out a registration form that collects essential information, including name, date of birth, email, password, and mobile number. The application utilizes SQLite as the database to store user data, ensuring persistence and easy retrieval.</li>
-            <li><strong>Secure Login:</strong> The login system allows users to enter their credentials. If the credentials match a registered user, the system sends an OTP to the user’s email.</li>
-            <li><strong>OTP Verification:</strong> Users must enter an OTP received via email to finish the login procedure.</li>
-            <li><strong>Admin Dashboard:</strong> Administrators may keep an eye on user activity by viewing a list of all registered users.</li>
-            <li><strong>Insecure Login Route:</strong> SQL injection vulnerabilities can be exploited on this route.</li>
-            <li><strong>Responsive Design:</strong> The web application employs Bootstrap for responsive design, ensuring a user-friendly experience across various devices.</li>
-        </ul>
-        <h3>Technical Stack</h3>
-        <ul>
-            <li>Backend: Flask (Python web framework)</li>
-            <li>Database: SQLite, managed via SQLAlchemy for ORM capabilities</li>
-            <li>Email Services: SMTP for sending OTPs</li>
-            <li>Frontend: HTML, CSS, JavaScript, utilizing Bootstrap for styling</li>
-        </ul>
-        <h3>Future Enhancements</h3>
-        <ul>
-            <li>Password Hashing: Use hashing techniques to store passwords in databases safely.</li>
-            <li>Enhanced Security Measures: Consider modules such as Flask-Security.</li>
-            <li>User Role Management: Extend the application to handle distinct user roles (e.g., admin, user).</li>
-        </ul>
-        <div class="image-gallery">
-            <img src="P1/P1.png"Image Description 1" class="clickable-image" onclick="openFullscreen('P1/P1.png')">
-            <img src="P1/SIGN UP.png" alt="Image Description 2" class="clickable-image" onclick="openFullscreen('P1/SIGN UP.png')">
-            <img src="P1/OTP.png" alt="Image Description 2" class="clickable-image" onclick="openFullscreen('P1/OTP.png')">
-            <img src="P1/OTP 2.png" alt="Image Description 2" class="clickable-image" onclick="openFullscreen('P1/OTP 2.png')">
-            <img src="P1/END.png" alt="Image Description 2" class="clickable-image" onclick="openFullscreen('P1/END.png')">
-        </div>
+        <button class="home-btn home-back" onclick="goBackMain()">
+            ← Back
+        </button>
     </div>
 </div>
 
-        <!-- Modal for Project 2 -->
-        <div id="modal2" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal('modal2')">&times;</span>
-                <h2>Project 2</h2>
-                <p>Details about Project 2 will go here.</p>
-            </div>
-        </div>
+    <div class="container" id="projectsPage" style="display:none;">
 
-        <button class="back-button" onclick="window.location.href='profile.html'">Back to Profile</button>
+        <h1>My Projects</h1>
+<div id="imgViewer">
+    <span class="close-viewer" onclick="closeImgViewer()">×</span>
+    <img id="viewerImg" src="">
+</div>
 
+<!-- PROJECT 1 -->
+<div class="project">
+    <img src="./VAULT UP (2).png" onclick="openImgViewer(this.src)">
+
+
+    <div class="project-details">
+        <h2>VAULTUP</h2>
+        <a href="https://github.com/ParthGVU/VAULTUP-FINAL-YEAR-PROJECT-.git" class="github-button" target="_blank">View on GitHub</a>
+        <button class="description-button" onclick="openModal('modal1')">Show Description</button>
+        <button class="language-button" onclick="openLanguageModal('languageModal1')">Used Languages</button>
     </div>
 
-    <!-- Fullscreen Image -->
-    <div id="fullscreenImg" class="fullscreen">
-        <span class="close-fullscreen" onclick="closeFullscreen()">&times;</span>
-        <img id="fullscreenImgContent" src="" alt="Fullscreen Image">
+    <div class="video-section">
+        <iframe width="100%" height="200"
+            src="https://www.youtube.com/embed/JYLNEItdGXg"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
+
+<div class="project">
+    <img src="./BDP.png" onclick="openImgViewer(this.src)">
+
+    <div class="project-details">
+        <h2>Business Decision Intelligence Platform (BDIP)</h2>
+        <a href="https://github.com/ParthGVU/BDIP.git" class="github-button">View on GitHub</a>
+        <button class="description-button" onclick="openModal('modal2')">Show Description</button>
+        <button class="language-button" onclick="openLanguageModal('languageModal2')">Used Languages</button>
     </div>
 
-    <!-- Fullscreen Video -->
-    <div id="fullscreenVideo" class="fullscreen">
-        <span class="close-fullscreen" onclick="closeFullscreenVideo()">&times;</span>
-        <video id="fullscreenVideoContent" controls></video>
+    <div class="video-section">
+        <iframe width="100%" height="200"
+            src="https://www.youtube.com/embed/E3D9AEZEjno"
+            frameborder="0"
+            allowfullscreen>
+        </iframe>
     </div>
+</div>
+
+
+<div class="project">
+    <img src="./ebd.png" onclick="openImgViewer(this.src)">
+
+    <div class="project-details">
+        <h2>Employee Burnout & Productivity Analytics Platform</h2>
+
+        <a href="https://github.com/ParthGVU/Employee-Burnout-Detection.git" class="github-button">View on GitHub</a>
+
+        <button class="description-button" onclick="openModal('modal3')">
+            Show Description
+        </button>
+
+        <button class="language-button" onclick="openLanguageModal('languageModal3')">
+            Used Languages
+        </button>
+    </div>
+
+    <div class="video-section">
+        <iframe
+            width="100%"
+            height="200"
+            src="https://www.youtube.com/embed/u-8qcN3Syyg"
+            title="Employee Burnout & Productivity Platform Demo"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
+
+
+<div class="project">
+    <img src="./SF.png" onclick="openImgViewer(this.src)">
+
+    <div class="project-details">
+        <h2>Smart Farming AI Assistant | AI + Weather + Mandi Rates for Farmers</h2>
+        <a href="https://github.com/ParthGVU/EHCL-P1.git" class="github-button">View on GitHub</a>
+        <button class="description-button" onclick="openModal('modal4')">Show Description</button>
+        <button class="language-button" onclick="openLanguageModal('languageModal4')">Used Languages</button>
+    </div>
+
+    <div class="video-section">
+        <iframe width="100%" height="200"
+            src="https://www.youtube.com/embed/uuX_pJlHPak"
+            frameborder="0"
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
+
+<div class="project">
+    <img src="P1/P1.png" onclick="openImgViewer(this.src)">
+
+    <div class="project-details">
+        <h2>User Authentication & OTP Verification System</h2>
+        <a href="https://github.com/ParthGVU/AS-PROJECT-.git" class="github-button" target="_blank">View on GitHub</a>
+        <button class="description-button" onclick="openModal('modal5')">Show Description</button>
+        <button class="language-button" onclick="openLanguageModal('languageModal5')">Used Languages</button>
+    </div>
+
+    <div class="video-section">
+        <iframe width="100%" height="200"
+            src="https://www.youtube.com/embed/xBk_Ivc54qs"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
+<div id="languageModal1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('languageModal1')">&times;</span>React.js, Node.js, MySQL</div></div>
+<div id="languageModal2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('languageModal2')">&times;</span>React.js, Python (Py), MySQL </div></div>
+<div id="languageModal3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('languageModal3')">&times;</span>React Native, Python (Py), MySQL </div></div>
+<div id="languageModal4" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('languageModal4')">&times;</span>React.js, Node.js</div></div>
+<div id="languageModal5" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('languageModal5')">&times;</span>Python, HTML, CSS, JavaScript, MySQL</div></div>
+
+<!-- ================= VAULTUP MODAL ================= -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal1')">&times;</span>
+
+    <h2>🏦 VaultUp – Secure Goal-Based Savings & Investment Platform</h2>
+
+    <p>
+      <strong>VaultUp</strong> is a secure, goal-based financial management platform designed to help users
+      <strong>save</strong> 💰, <strong>invest</strong> 📈, and <strong>access loans</strong> 🏦 in a
+      structured and disciplined manner. The platform combines customizable savings vaults, stock market
+      investment options, and loan services into a single ecosystem, ensuring financial growth, security,
+      and accessibility for all users, including minors 👨‍👩‍👧‍👦 under parental supervision.
+    </p>
+
+    <h3>📄 Abstract</h3>
+    <p>
+      VaultUp is a modern <strong>FinTech platform</strong> that enables users to efficiently save,
+      invest, and manage their finances through customizable digital vaults 🔐. Users can create
+      goal-based vaults for purposes such as <strong>education</strong> 🎓, <strong>travel</strong> ✈️,
+      or <strong>emergencies</strong> 🚑, with optional lock-in periods for interest-based growth.
+      The system also provides stock market investment vaults managed by financial experts and a
+      loan application module for users seeking financial assistance.
+      Security is ensured through <strong>RBI-compliant practices</strong>, two-factor authentication,
+      and encrypted transactions 🔒.
+    </p>
+
+    <h3>🎯 Objectives & Goals</h3>
+    <p>
+      The primary objective of VaultUp is to build a <strong>goal-based digital savings ecosystem</strong>
+      that promotes disciplined financial behavior. It enables users to manage savings vaults aligned
+      with personal financial goals, apply flexible lock-in mechanisms for higher interest returns, and
+      access investment opportunities under expert management. The system emphasizes financial security,
+      regulatory compliance, and a seamless user experience while encouraging financial literacy and
+      responsible saving habits 📘.
+    </p>
+
+    <h3>⚙️ System Overview</h3>
+    <p>
+      VaultUp automates savings, investments, and financial reporting based on user-defined inputs such
+      as bank details, savings schedules, transaction history, and financial objectives. The system
+      automatically transfers savings, updates wallet balances, manages investments, and generates
+      detailed financial reports 📊, reducing manual effort and improving financial discipline.
+    </p>
+
+    <h3>✨ Key Features</h3>
+    <ul>
+      <li>🎯 Goal-based savings vaults with flexible lock-in options</li>
+      <li>🤖 Automated savings and smart fund allocation</li>
+      <li>📈 Stock market investment vaults with expert management</li>
+      <li>🔐 Secure transactions with encryption and multi-factor authentication</li>
+      <li>👨‍👩‍👧 Parental supervision support for minors</li>
+      <li>📲 Real-time financial insights and notifications</li>
+    </ul>
+
+    <h3>✅ Conclusion</h3>
+    <p>
+      VaultUp bridges the gap between <strong>savings</strong>, <strong>investments</strong>, and
+      <strong>financial security</strong> through a single, goal-driven platform. By combining automation,
+      strong security, regulatory compliance, and user-centric design, VaultUp empowers users to achieve
+      financial stability, encourages long-term savings habits, and supports inclusive financial growth
+      in modern digital environments 🌍.
+    </p>
+
+  </div>
+</div>
+
+<div id="modal3" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal3')">&times;</span>
+
+    <h2>🧠 Employee Burnout Detection & Productivity Monitoring System</h2>
+
+    <p>
+      This project is an <strong>Employee Burnout Detection and Productivity Monitoring System</strong>
+      designed to automatically track real-time employee activity, calculate
+      <strong>productivity</strong> 📈 and <strong>burnout scores</strong> 🔥, and provide
+      meaningful insights to <strong>employees</strong>, <strong>HR</strong>,
+      <strong>managers</strong>, and <strong>leadership</strong> for early intervention
+      and improved workplace well-being.
+    </p>
+
+    <p>
+      🔐 The system begins with a <strong>secure login mechanism</strong> where each user
+      enters valid credentials. Based on the assigned role, users are redirected to the
+      appropriate dashboard while their login session is securely recorded in the
+      database for auditing and transparency.
+    </p>
+
+    <p>
+      ⌨️🖱️ Once logged in, employees are monitored in a <strong>non-intrusive and ethical</strong>
+      manner through passive activity tracking such as mouse clicks, keyboard presses,
+      movement, and active minutes. This data is collected continuously on the frontend
+      and transmitted to the backend every <strong>60 seconds</strong> for processing.
+    </p>
+
+    <p>
+      ⚙️ The backend aggregates activity over short time windows and applies a
+      <strong>human-centric algorithm</strong> that normalizes effort, increases productivity
+      gradually with consistent engagement, and adjusts burnout very slowly to avoid
+      unfair penalties. Short idle periods do not negatively affect scores, ensuring
+      realistic and fair evaluation.
+    </p>
+
+    <p>
+      👤 Employees have <strong>full transparency</strong> into their own data. They can
+      view productivity scores, burnout scores, burnout levels, login and logout times,
+      daily productivity history, and detailed minute-wise activity logs. This promotes
+      self-awareness and accountability without creating stress or surveillance pressure.
+    </p>
+
+    <p>
+      👥 HR users are assigned specific employees and can monitor only those employees
+      through a focused dashboard. Features include searching, sorting by productivity,
+      and visual burnout indicators, enabling HR teams to detect early warning signs and
+      take supportive, preventive actions rather than reactive ones.
+    </p>
+
+    <p>
+      🏗️ Managers act as <strong>structural controllers</strong> within the system. They
+      can create employee and HR accounts, assign employees to HRs, and manage
+      organizational relationships. Managers are intentionally restricted from viewing
+      sensitive behavioral analytics, ensuring ethical access control and data privacy.
+    </p>
+
+    <p>
+      🧩 The <strong>HRO role</strong> provides higher-level oversight by displaying all HRs
+      along with the average productivity of employees under each HR. Drill-down views
+      allow leadership to compare teams, balance workloads, and make strategic decisions
+      based on aggregated performance data.
+    </p>
+
+    <p>
+      🗄️ On the backend, the system is implemented using <strong>FastAPI</strong> and
+      <strong>SQLite</strong> with carefully designed database tables for users, sessions,
+      live activity, daily productivity snapshots, and HR assignments. This architecture
+      ensures secure role-based access, accurate session tracking, and consistent analytics
+      across the platform.
+    </p>
+
+    <p>
+      ✅ Overall, this system transforms burnout assessment from a manual and subjective
+      process into a <strong>data-driven, fair, and preventive approach</strong>. It
+      improves employee well-being, enhances productivity, supports HR and leadership
+      decision-making, and promotes a healthier, more sustainable work culture suited for
+      modern organizations.
+    </p>
+
+  </div>
+</div>
+
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal2')">&times;</span>
+
+    <h2>📊 Business Decision Intelligence Platform (BDIP)</h2>
+    <p class="subtitle">📌 Complete System Explanation</p>
+
+    <h3>🔍 Overview</h3>
+    <p>
+      The <strong>Business Decision Intelligence Platform (BDIP)</strong> is a role-based,
+      full-stack enterprise analytics system designed to support structured
+      decision-making across multiple organizational levels. The platform integrates
+      <strong>operational data</strong>, <strong>human resource metrics</strong>, and
+      <strong>financial indicators</strong> into a unified system to deliver actionable,
+      data-driven insights.
+    </p>
+
+    <h3>🔐 System Initialization & Secure Authentication</h3>
+    <p>
+      On first launch, the backend automatically initializes the database and seeds two
+      permanent system-level users: the <strong>System Administrator</strong> and the
+      <strong>Main Manager</strong>. These protected accounts cannot be modified or
+      recreated through the UI, ensuring system integrity. Authentication is handled
+      using <strong>JWT-based security</strong>, where each successful login generates
+      a secure token containing the user’s role and identity.
+    </p>
+
+    <h3>🛠 Administrator Role</h3>
+    <p>
+      The Administrator configures the organization by creating <strong>managers</strong>,
+      <strong>employees</strong>, and <strong>executives</strong>. Managers are created
+      with a mandatory department, employees are assigned via dropdown selection and
+      automatically inherit the manager’s department, while executives are created
+      solely for analytics access. System-level users remain hidden from the admin
+      interface for enhanced security.
+    </p>
+
+    <h3>👥 Manager Role</h3>
+    <p>
+      Managers can view only their assigned employees and update productivity and
+      burnout scores within a validated range. The dashboard provides a live team
+      overview including department details, performance scores, and automatically
+      calculated burnout risk levels, enabling proactive and informed team management.
+    </p>
+
+    <h3>👤 Employee Role</h3>
+    <p>
+      Employees have a <strong>read-only dashboard</strong> displaying their department,
+      productivity score, burnout score, and burnout risk level. This approach promotes
+      transparency and self-awareness while preventing any unauthorized data manipulation.
+    </p>
+
+    <h3>💰 Main Manager Role</h3>
+    <p>
+      The Main Manager is responsible for <strong>revenue management</strong> and
+      strategic oversight. Revenue is entered using structured units such as hundreds,
+      lakhs, or crores and stored in a standardized format. The Main Manager also monitors
+      manager-level performance using average team productivity and employee count.
+    </p>
+
+    <h3>📈 Executive Role</h3>
+    <p>
+      Executives consume high-level analytics without modifying any data. The executive
+      dashboard computes an <strong>Overall Business Health Score</strong> using weighted
+      revenue, productivity, and burnout metrics, supported by intuitive visual indicators
+      and clear status classifications.
+    </p>
+
+    <h3>🧠 Intelligent Recommendations</h3>
+    <p>
+      Based on real-time system metrics, BDIP dynamically generates strategic
+      recommendations such as burnout intervention plans, productivity improvement
+      actions, and scaling guidance for high-performing teams.
+    </p>
+
+    <h3>🌐 System Value</h3>
+    <p>
+      BDIP bridges the gap between operational data and executive decision-making while
+      maintaining strict role separation and security. The platform is <strong>scalable</strong>,
+      <strong>secure</strong>, and aligned with real-world corporate workflows, making it
+      ideal for enterprise environments, internships, academic evaluation, and
+      professional demonstrations.
+    </p>
+
+  </div>
+</div>
+
+<div id="modal4" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal4')">&times;</span>
+
+    <h2>🌾 Smart Farming AI Assistant</h2>
+    <h4>AI + Weather + Mandi Rates for Farmers 🚜</h4>
+
+    <p>
+      This project is a <strong>Flask-powered AI backend</strong> designed to assist Indian farmers with
+      real-time, localized agricultural information.
+    </p>
+
+    <p>
+      It integrates <strong>AI intelligence</strong>, <strong>weather forecasting</strong>,
+      <strong>location services</strong>, and <strong>mandi rate updates</strong> to deliver
+      actionable insights in multiple Indian languages.
+    </p>
+
+    <h3>✨ Key Features</h3>
+    <ul>
+      <li>📍 Location-based weather updates (temperature, rainfall, wind speed)</li>
+      <li>🗺 Accurate city detection using OpenStreetMap</li>
+      <li>🤖 AI-powered query handling with GPT4All</li>
+      <li>📊 Mandi (wholesale market) price information for major crops</li>
+      <li>🌐 Multi-language support (English, Hindi, Marathi & more)</li>
+      <li>🧑‍🌾 Professional, farmer-friendly advisory responses</li>
+    </ul>
+
+    <h3>🛠 Tech Stack</h3>
+    <ul>
+      <li>Flask & Flask-CORS – Backend framework</li>
+      <li>GPT4All – AI response generation</li>
+      <li>Google Translate API – Multi-language support</li>
+      <li>Open-Meteo API – Real-time weather data</li>
+      <li>OpenStreetMap API – Location detection</li>
+    </ul>
+
+    <h3>📌 Use Case</h3>
+    <p>
+      Farmers can ask questions like:
+    </p>
+    <ul>
+      <li><em>“आज प्याज का मंडी भाव कितना है?”</em></li>
+      <li><em>“What should I sow this season?”</em></li>
+    </ul>
+
+    <p>
+      The system instantly provides <strong>accurate, localized, AI-driven answers</strong>,
+      making it ideal for smart agriculture solutions.
+    </p>
+
+    <p>
+      🔗 <strong>Perfect for:</strong> Smart agriculture apps, farmer advisory platforms,
+      and agri-tech startup solutions.
+    </p>
+  </div>
+</div>
+
+<div id="modal5" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal5')">&times;</span>
+
+    <h2>🔐 User Authentication & OTP Verification System</h2>
+
+    <p>
+      The <strong>User Authentication and OTP Verification System</strong> is a secure web application
+      designed to facilitate user registration, login, and verification using
+      <strong>One-Time Passwords (OTPs)</strong> 📩. Built using <strong>Flask</strong>,
+      this project demonstrates best practices in user data handling, authentication workflows,
+      and web security fundamentals.
+    </p>
+
+    <h3>📌 Project Overview</h3>
+    <p>
+      This application provides an intuitive and responsive interface for managing user
+      authentication and verification processes. Developed using <strong>Flask</strong>,
+      a lightweight Python web framework 🐍, it enables users to register, log in,
+      and complete identity verification via OTP. An <strong>Admin Dashboard</strong>
+      is also included to monitor users and manage application data efficiently.
+    </p>
+
+    <h3>🎯 Objectives</h3>
+    <ol>
+      <li>👤 <strong>User Management:</strong> Enable users to create and manage secure accounts.</li>
+      <li>🔑 <strong>Authentication Process:</strong> Implement a strong login mechanism with OTP-based verification.</li>
+      <li>📊 <strong>Admin Dashboard:</strong> Provide administrators with visibility into user data and activity.</li>
+      <li>⚠️ <strong>Security Awareness:</strong> Demonstrate common security risks through an intentionally insecure login route.</li>
+    </ol>
+
+    <h3>✨ Key Features</h3>
+    <ul>
+      <li>📝 <strong>User Registration:</strong> Collects essential details such as name, DOB, email, password, and mobile number.</li>
+      <li>🔐 <strong>Secure Login:</strong> Validates credentials before triggering OTP verification.</li>
+      <li>📨 <strong>OTP Verification:</strong> Sends OTP via email to complete the login process.</li>
+      <li>🛠 <strong>Admin Dashboard:</strong> Allows administrators to view and monitor registered users.</li>
+      <li>💉 <strong>Insecure Login Route:</strong> Demonstrates SQL Injection vulnerabilities for educational purposes.</li>
+      <li>📱 <strong>Responsive Design:</strong> Built with Bootstrap to ensure smooth experience across devices.</li>
+    </ul>
+
+    <h3>🧰 Technical Stack</h3>
+    <ul>
+      <li>⚙️ <strong>Backend:</strong> Flask (Python Web Framework)</li>
+      <li>🗄 <strong>Database:</strong> SQLite with SQLAlchemy ORM</li>
+      <li>📧 <strong>Email Services:</strong> SMTP for OTP delivery</li>
+      <li>🎨 <strong>Frontend:</strong> HTML, CSS, JavaScript, Bootstrap</li>
+    </ul>
+
+    <h3>🚀 Future Enhancements</h3>
+    <ul>
+      <li>🔒 Password Hashing using industry-standard algorithms</li>
+      <li>🛡 Integration with Flask-Security or similar security modules</li>
+      <li>👥 Role-Based Access Control (Admin, User, Moderator)</li>
+    </ul>
+
+  </div>
+</div>
+
+<button class="back-button" onclick="goBackHome()">Back</button>
 
     <script>
         function openModal(modalId) {
@@ -355,7 +867,22 @@
         }
 
         let currentVideo = null; // Variable to store the currently playing small-screen video
+ function showProjects() {
+        document.getElementById("homePage").style.display = "none";
+        document.getElementById("projectsPage").style.display = "block";
+    }
 
+    function goToInternship() {
+        window.location.href = "internship.html";
+    }
+function openImgViewer(src) {
+    document.getElementById("imgViewer").style.display = "flex";
+    document.getElementById("viewerImg").src = src;
+}
+
+function closeImgViewer() {
+    document.getElementById("imgViewer").style.display = "none";
+}
 function openFullscreenVideo(videoSrc) {
     // Pause the original small-screen video
     if (currentVideo) {
@@ -394,7 +921,14 @@ document.querySelectorAll('.video-section video').forEach(video => {
 
 // Event listener for closing fullscreen using the close button
 document.querySelector('.close-fullscreen').addEventListener('click', closeFullscreenVideo);
-        
+        function goBackHome() {
+        document.getElementById("projectsPage").style.display = "none";
+        document.getElementById("homePage").style.display = "flex";
+    }
+    function goBackMain() {
+    window.history.back();
+}
+
     </script>
 
 </body>
