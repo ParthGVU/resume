@@ -1,0 +1,22 @@
+/* -------- GLOBAL MOBILE FIX -------- */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Scale entire site on small screens */
+@media (max-width: 768px) {
+  body {
+    zoom: 0.9;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    zoom: 0.8;
+  }
+}

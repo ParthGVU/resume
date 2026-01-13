@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Internships</title>
+
+<style>
+body {
+    font-family: 'Playfair Display', serif;
+    background-color: #000;
+    color: white;
+    margin: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2.8em;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Internship Card */
+.project {
+    display: flex;
+    align-items: center;   /* ✅ vertically centers image */
+    justify-content: space-between;
+    background-color: #111;
+    border: 1px solid #444;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 40px;
+}
+
+
+.project img {
+    width: 30%;
+    border-radius: 10px;
+    border: 3px solid white;
+    cursor: pointer;
+}
+
+.project-details {
+    flex: 1;
+    padding: 0 20px;
+}
+
+.project-details h2 {
+    font-size: 2em;
+}
+
+.github-button, .description-button {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-top: 8px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.github-button {
+    background: #007bff;
+}
+
+.description-button {
+    background: #28a745;
+}
+
+/* Back Button */
+.back-button {
+    display: block;
+    margin: 30px auto;
+    padding: 10px 25px;
+    font-size: 1.2em;
+    background: #007bff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 1000;
+    overflow-y: auto;      /* ✅ ENABLE SCROLL */
+    padding: 40px 0;
+}
+
+.modal-content {
+    background: #222;
+    width: 80%;
+    max-width: 1000px;
+    margin: auto;
+    padding: 25px;
+    border-radius: 12px;
+
+    max-height: 85vh;     /* ✅ LIMIT HEIGHT */
+    overflow-y: auto;     /* ✅ SCROLL INSIDE MODAL */
+}
+.doc-buttons {
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.doc-btn {
+    padding: 8px 16px;
+    background: #17a2b8;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.doc-btn:hover {
+    background: #117a8b;
+}
+
+.close {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* Gallery */
+.desc-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.desc-gallery img {
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.desc-gallery img:hover {
+    transform: scale(1.08);
+}
+
+/* Fullscreen Image Viewer */
+#imgViewer {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+#imgViewer img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 12px;
+    border: 3px solid white;
+}
+
+#imgViewer span {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 35px;
+    cursor: pointer;
+}
+@media (max-width: 768px) { body { font-size: 14px; } }
+
+</style>
+</head>
+
+<body>
+
+<div class="container" id="internshipPage" style="display:none;">
+
+<h1>My Internships</h1>
+
+<!-- INTERNSHIP 2 -->
+<div class="project">
+    <img src="./VUBU.png" onclick="openImgViewer(this.src)">
+    <div class="project-details">
+        <h2>Research & Analysis Intern – EV Greenhouse Technologies</h2>
+        <p><strong>Organization:</strong> VU-BU Centre of Design Thinking & Innovation</p>
+        <p><strong>Project Code:</strong> VUBU/S&T/2024–2025/37</p>
+        <p><strong>Duration:</strong> Feb 2025 – June 2025</p>
+        <button class="description-button" onclick="openModal('intern1')">
+            View Details
+        </button>
+        <h3>📄 Official Documents</h3>
+
+<div class="doc-buttons">
+    <button class="doc-btn" onclick="openImgViewer('/VUBULETTER.png')">
+        📜 View Offer Letter
+    </button>
+
+   <button class="doc-btn" onclick="openImgViewer('/VUBU CERT.jpeg')">
+    🎓 View Certificate
+</button>
+
+</div>
+
+    </div>
+</div>
+
+
+<!-- INTERNSHIP 1 MODAL -->
+<div id="intern1" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('intern1')">&times;</span>
+
+    <h2>🔋 Market Growth, Policy Impacts & Technological Advancements in EV Greenhouse Technologies</h2>
+
+    <p>
+      This internship was conducted under the <strong>VU-BU Centre of Design Thinking and Innovation</strong>
+      as part of the academic research initiative for the academic year
+      <strong>2024–2025</strong>. The project focused on analyzing the rapid growth of
+      <strong>Electric Vehicles (EVs)</strong> and their role in reducing greenhouse gas emissions.
+    </p>
+
+    <h3>📌 Internship Overview</h3>
+    <p>
+      The research aimed to study how <strong>market trends</strong>, <strong>government policies</strong>,
+      and <strong>technological innovations</strong> are shaping the EV ecosystem. Emphasis was placed on
+      sustainability, climate impact, and future adoption strategies in India and global markets.
+    </p>
+
+    <h3>🎯 Key Objectives</h3>
+    <ul>
+      <li>📈 Analyze EV market growth trends and adoption rates</li>
+      <li>🏛️ Study government policies and incentives affecting EV adoption</li>
+      <li>🔬 Examine technological advancements in batteries and charging infrastructure</li>
+      <li>🌍 Evaluate environmental impact and greenhouse gas reduction</li>
+    </ul>
+
+    <h3>🛠 Work & Contributions</h3>
+    <ul>
+      <li>📊 Conducted data-driven market and policy analysis</li>
+      <li>📑 Prepared analytical reports and documentation</li>
+      <li>🔍 Studied real-world EV case studies and technology roadmaps</li>
+      <li>🤝 Collaborated with academic mentors and research teams</li>
+    </ul>
+
+    <h3>📚 Tools & Skills Used</h3>
+    <ul>
+      <li>Research & Data Analysis</li>
+      <li>Policy Impact Evaluation</li>
+      <li>Sustainability & Climate-Tech Concepts</li>
+      <li>Technical & Academic Documentation</li>
+    </ul>
+
+    <h3>🌱 Outcome & Learning</h3>
+    <p>
+      This internship strengthened my understanding of <strong>EV ecosystems</strong>,
+      <strong>sustainable technologies</strong>, and the role of innovation in climate action.
+      It also enhanced my analytical thinking, research skills, and ability to translate
+      complex technical insights into structured reports.
+    </p>
+
+   <h3>🏅 Certificate Distribution Ceremony</h3>
+
+<div class="desc-gallery">
+    <img src="./VUBU CERT.jpeg" onclick="openImgViewer(this.src)">
+    <img src="./DISTRIBUTION.jpeg" onclick="openImgViewer(this.src)">
+</div>
+
+
+  </div>
+</div>
+
+
+
+<!-- FULLSCREEN IMAGE VIEWER -->
+<div id="imgViewer">
+<span onclick="closeImgViewer()">×</span>
+<img id="viewerImg">
+</div>
+
+<script>
+function openModal(id) {
+    document.getElementById(id).style.display = "block";
+}
+
+function closeModal(id) {
+    document.getElementById(id).style.display = "none";
+}
+
+function openImgViewer(src) {
+    document.getElementById("imgViewer").style.display = "flex";
+    document.getElementById("viewerImg").src = src;
+}
+
+function closeImgViewer() {
+    document.getElementById("imgViewer").style.display = "none";
+}
+
+window.onload = function () {
+    document.getElementById("internshipPage").style.display = "block";
+};
+
+function goBackHome() {
+    window.history.back();
+}
+</script>
+
+
+</body>
+</html>
