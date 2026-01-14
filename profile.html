@@ -468,39 +468,39 @@
 
 #desktop-popup span {
   position: absolute;
+  top: 50%;
+  right: 12px;
 
-  /* ✅ SAFE AREA FIX */
-  top: calc(12px + env(safe-area-inset-top));
-  right: calc(12px + env(safe-area-inset-right));
+  transform: translateY(-50%);
 
-  font-size: 22px;
-  font-weight: bold;
-
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
 
-  background: #000;
+  background: black;
   color: #FFD700;
 
   border-radius: 50%;
-  line-height: 1;
+  cursor: pointer;
 
-  z-index: 9999;              /* ✅ ABOVE EVERYTHING */
-  pointer-events: auto;       /* ✅ CLICKABLE */
-
-  transition: background 0.2s ease, color 0.2s ease;
+  z-index: 6000;
 }
+
 
 
 #desktop-popup span:hover {
   background: red;
   color: white;
+}
+#desktop-popup {
+  top: 55px;               /* ⬅ height of navbar */
+  z-index: 5000;           /* ⬅ higher than navbar */
 }
 
 /* REMOVE YELLOW TAP HIGHLIGHT */
@@ -508,9 +508,7 @@
 #desktop-popup * {
   -webkit-tap-highlight-color: transparent;
 }
-#desktop-popup {
-  padding-top: calc(12px + env(safe-area-inset-top));
-}
+
 
 
 #desktop-popup {
