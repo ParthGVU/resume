@@ -444,7 +444,7 @@
 
 <!-- PROJECT 1 -->
 <div class="project">
-    <img src="./VAULT UP (2).png" onclick="openImgViewer(this.src)">
+    <img src="./VAULT UP (2).png" onclick="openFullscreen(this.src)">
 
 
     <div class="project-details">
@@ -468,7 +468,7 @@
 
 
 <div class="project">
-    <img src="./BDP.png" onclick="openImgViewer(this.src)">
+    <img src="./BDP.png" onclick="openFullscreen(this.src)">
 
     <div class="project-details">
         <h2>Business Decision Intelligence Platform (BDIP)</h2>
@@ -489,7 +489,7 @@
 
 
 <div class="project">
-    <img src="./ebd.png" onclick="openImgViewer(this.src)">
+    <img src="./ebd.png" onclick="openFullscreen(this.src)">
 
     <div class="project-details">
         <h2>Employee Burnout & Productivity Analytics Platform</h2>
@@ -519,7 +519,7 @@
 
 
 <div class="project">
-    <img src="./SF.png" onclick="openImgViewer(this.src)">
+    <img src="./SF.png" onclick="openFullscreen(this.src)">
 
     <div class="project-details">
         <h2>Smart Farming AI Assistant | AI + Weather + Mandi Rates for Farmers</h2>
@@ -541,7 +541,7 @@
 
 
 <div class="project">
-    <img src="P1/P1.png" onclick="openImgViewer(this.src)">
+    <img src="P1/P1.png" onclick="openFullscreen(this.src)">
 
     <div class="project-details">
         <h2>User Authentication & OTP Verification System</h2>
@@ -968,6 +968,11 @@
   preload="auto"
   playsinline>
 </audio>
+<!-- ===== FULLSCREEN IMAGE MODAL ===== -->
+<div id="fullscreenImg" class="fullscreen">
+    <span class="close-fullscreen" onclick="closeFullscreen()">×</span>
+    <img id="fullscreenImgContent" src="">
+</div>
 
     <script>
 let currentAudio = null;
