@@ -453,16 +453,19 @@
 #desktop-popup {
   display: none;
   position: fixed;
-  top: 0;                 /* ✅ always at very top */
+  top: 0;
   left: 0;
   width: 100%;
   background-color: #FFD700;
   color: #000;
-  padding: 14px 48px 14px 15px;
+  padding: 14px 56px 14px 15px;
   font-size: 14px;
   z-index: 6000;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  align-items: center;
 }
+
+
 
 #desktop-popup b {
   font-weight: 800;
@@ -493,10 +496,15 @@
   color: white;
 }
 
-body.popup-visible .navbar {
-  top: auto;
-  transform: translateY(56px);
+body.popup-visible {
+  padding-top: 64px;   /* reserve space for popup */
 }
+
+body.popup-visible .navbar {
+  top: 64px;           /* navbar always below popup */
+  transform: none;
+}
+
 
 
 
@@ -730,13 +738,17 @@ if (
   window.innerWidth <= 768 &&
   /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
 ) {
-  popup.style.display = "block";
-  document.body.classList.add("popup-visible");
+ popup.style.display = "block";
+document.body.classList.add("popup-visible");
+document.body.style.overflow = "hidden";
+
 }
 
 function closePopup() {
-  popup.style.display = "none";
-  document.body.classList.remove("popup-visible");
+popup.style.display = "none";
+document.body.classList.remove("popup-visible");
+document.body.style.overflow = "";
+
 }
   function showDownload() {
     document.getElementById("downloadResume").style.display = "block";
