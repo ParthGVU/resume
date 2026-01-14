@@ -575,7 +575,6 @@
     🔊 Listen Description
 </button>
 
-<audio id="audio1" src="a.mp3"></audio>
 
     <h2>🏦 VaultUp – Secure Goal-Based Savings & Investment Platform</h2>
 
@@ -645,8 +644,6 @@
 <button class="speak-button" onclick="playDescriptionAudio('audio2')">
     🔊 Listen Description
 </button>
-
-<audio id="audio2" src="c.mp3"></audio>
 
 
     <h2>🧠 Employee Burnout Detection & Productivity Monitoring System</h2>
@@ -736,7 +733,6 @@
     🔊 Listen Description
 </button>
 
-<audio id="audio3" src="b.mp3"></audio>
 
 
     <h2>📊 Business Decision Intelligence Platform (BDIP)</h2>
@@ -829,7 +825,6 @@
     🔊 Listen Description
 </button>
 
-<audio id="audio4" src="d.mp3"></audio>
 
 
     <h2>🌾 Smart Farming AI Assistant</h2>
@@ -893,7 +888,6 @@
     🔊 Listen Description
 </button>
 
-<audio id="audio5" src="e.mp3"></audio>
 
 
     <h2>🔐 User Authentication & OTP Verification System</h2>
@@ -952,24 +946,47 @@
 </div>
 
 <button class="back-button" onclick="goBackHome()">Back</button>
+<!-- ===== AUDIO ELEMENTS (GLOBAL) ===== -->
+<audio id="audio1" src="a.mp3" preload="auto"></audio>
+<audio id="audio2" src="c.mp3" preload="auto"></audio>
+<audio id="audio3" src="b.mp3" preload="auto"></audio>
+<audio id="audio4" src="d.mp3" preload="auto"></audio>
+<audio id="audio5" src="e.mp3" preload="auto"></audio>
 
     <script>
-        let currentAudio = null;
+let currentAudio = null;
 
 function playDescriptionAudio(audioId) {
-    // stop previous audio
     if (currentAudio) {
         currentAudio.pause();
         currentAudio.currentTime = 0;
     }
 
     const audio = document.getElementById(audioId);
-    if (audio) {
-        currentAudio = audio;
-        audio.play().catch(err => console.log(err));
-    }
+    if (!audio) return;
+
+    audio.currentTime = 0;
+    audio.muted = false;
+
+    audio.play()
+        .then(() => {
+            currentAudio = audio;
+        })
+        .catch(err => {
+            console.log("Playback blocked:", err);
+        });
 }
 
+document.addEventListener('click', function unlockAudio() {
+    document.querySelectorAll('audio').forEach(audio => {
+        audio.play().then(() => {
+            audio.pause();
+            audio.currentTime = 0;
+        }).catch(() => {});
+    });
+
+    document.removeEventListener('click', unlockAudio);
+});
         function openModal(modalId) {
             document.getElementById(modalId).style.display = "block";
         }
@@ -1065,5 +1082,6 @@ document.querySelector('.close-fullscreen').addEventListener('click', closeFulls
 
 </body>
 </html>
+
 
 
