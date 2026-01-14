@@ -257,9 +257,12 @@
     padding: 10px 0; /* Padding for the navbar */
     z-index: 1000; /* Keep the navbar above other elements */
 }
-body.popup-visible .navbar {
-  top: 40px; /* height of popup */
+@media (max-width: 768px) {
+  body.popup-visible {
+    padding-top: 48px;
+  }
 }
+
 
 .navbar a {
     color: white; /* Text color */
@@ -444,46 +447,62 @@ body.popup-visible .navbar {
 /* ================= MOBILE DESKTOP-MODE POPUP ================= */
 
 #desktop-popup {
-  display: none;                 /* ❌ hidden by default */
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #000;        /* ✅ BLACK background */
+  background-color: #000 !important;   /* ✅ FORCE BLACK */
   color: #fff;
-  padding: 12px 45px 12px 15px;
+  padding: 12px 50px 12px 15px;
   font-size: 14px;
-  z-index: 2000;
-  box-shadow: 0 2px 6px rgba(255,255,255,0.15);
-  animation: slideDown 0.35s ease;
+  z-index: 3000;
+  box-shadow: 0 2px 8px rgba(255,255,255,0.2);
 }
 
-/* Bold Desktop Mode text */
+/* Bold Desktop Mode */
 #desktop-popup b {
   font-weight: 800;
-  color: #00bfff;                /* highlight (not yellow) */
+  color: #00bfff;
 }
 
-/* Close (X) button */
+/* Close (X) — MAKE IT VISIBLE */
 #desktop-popup span {
   position: absolute;
   right: 12px;
-  top: 6px;
-  font-size: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
   font-weight: bold;
   cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 50%;
+
+  background: #222;              /* ✅ visible bg */
   color: white;
+
+  padding: 6px 10px;
+  border-radius: 50%;
+  line-height: 1;
+
   transition: background 0.2s ease, color 0.2s ease;
 }
 
 #desktop-popup span:hover {
-  background: rgba(255, 255, 255, 0.15);
-  color: red;
+  background: red;
+  color: white;
 }
 
+/* REMOVE YELLOW TAP HIGHLIGHT */
+#desktop-popup,
+#desktop-popup * {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
 /* Slide animation */
+#desktop-popup {
+  animation: slideDown 0.35s ease;
+}
+
 @keyframes slideDown {
   from { transform: translateY(-100%); }
   to   { transform: translateY(0); }
@@ -718,21 +737,22 @@ body.popup-visible .navbar {
   }
 </script>
 <script>
- if (
+  const popup = document.getElementById("desktop-popup");
+
+  // Show ONLY on real mobile devices
+  if (
     window.innerWidth <= 768 &&
     /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
   ) {
-    document.getElementById("desktop-popup").style.display = "block";
+    popup.style.display = "block";
     document.body.classList.add("popup-visible");
   }
 
   function closePopup() {
-    document.getElementById("desktop-popup").style.display = "none";
+    popup.style.display = "none";
     document.body.classList.remove("popup-visible");
   }
 </script>
-
-
 
 </body>
 </html>
