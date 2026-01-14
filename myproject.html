@@ -332,7 +332,70 @@
 .home-back:hover {
     background-color: #5a6268;
 }
-@media (max-width: 768px) { body { font-size: 14px; } }
+/* ================= MOBILE RESPONSIVE FIX ================= */
+@media (max-width: 768px) {
+
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .project {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .project img {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .project-details {
+        padding: 0;
+        text-align: center;
+    }
+
+    .project h2 {
+        font-size: 1.6em;
+    }
+
+    /* YouTube Responsive Fix */
+    .video-section {
+        width: 100%;
+    }
+
+   /* Responsive YouTube Wrapper */
+.video-section {
+    width: 30%;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 ratio */
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 3px solid white;
+}
+
+
+    /* Buttons wrap nicely */
+    .github-button,
+    .description-button,
+    .language-button {
+        margin: 6px 4px;
+        font-size: 0.85em;
+    }
+}
+
 
 
     </style>
@@ -343,10 +406,12 @@
 
     <div class="home-actions">
         <button class="home-btn" onclick="showProjects()">
+            <img src="/project.jpeg" alt="Projects">
             Projects
         </button>
 
         <button class="home-btn" onclick="goToInternship()">
+            <img src="/INTERNSHIPS.jpeg" alt="Internship">
             Internship
         </button>
 
@@ -383,8 +448,10 @@
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
         </iframe>
+        
     </div>
 </div>
+
 
 
 <div class="project">
@@ -396,13 +463,14 @@
         <button class="description-button" onclick="openModal('modal2')">Show Description</button>
         <button class="language-button" onclick="openLanguageModal('languageModal2')">Used Languages</button>
     </div>
-
-    <div class="video-section">
+ <div class="video-section">
         <iframe width="100%" height="200"
-            src="https://www.youtube.com/embed/E3D9AEZEjno"
+           src="https://www.youtube.com/embed/E3D9AEZEjno"
             frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
         </iframe>
+     
     </div>
 </div>
 
@@ -425,15 +493,13 @@
     </div>
 
     <div class="video-section">
-        <iframe
-            width="100%"
-            height="200"
-            src="https://www.youtube.com/embed/u-8qcN3Syyg"
-            title="Employee Burnout & Productivity Platform Demo"
+              <iframe width="100%" height="200"
+           src="https://www.youtube.com/embed/u-8qcN3Syyg"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
         </iframe>
+       
     </div>
 </div>
 
@@ -450,11 +516,13 @@
     </div>
 
     <div class="video-section">
-        <iframe width="100%" height="200"
-            src="https://www.youtube.com/embed/uuX_pJlHPak"
+                  <iframe width="100%" height="200"
+           src="https://www.youtube.com/embed/uuX_pJlHPak"
             frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
         </iframe>
+        
     </div>
 </div>
 
@@ -470,8 +538,9 @@
     </div>
 
     <div class="video-section">
+        
         <iframe width="100%" height="200"
-            src="https://www.youtube.com/embed/xBk_Ivc54qs"
+           src="https://www.youtube.com/embed/xBk_Ivc54qs"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
@@ -931,5 +1000,3 @@ document.querySelector('.close-fullscreen').addEventListener('click', closeFulls
 
 </body>
 </html>
-
-
