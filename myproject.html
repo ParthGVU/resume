@@ -947,46 +947,52 @@
 
 <button class="back-button" onclick="goBackHome()">Back</button>
 <!-- ===== AUDIO ELEMENTS (GLOBAL) ===== -->
-<audio id="audio1" src="a.mp3" preload="auto"></audio>
-<audio id="audio2" src="c.mp3" preload="auto"></audio>
-<audio id="audio3" src="b.mp3" preload="auto"></audio>
-<audio id="audio4" src="d.mp3" preload="auto"></audio>
-<audio id="audio5" src="e.mp3" preload="auto"></audio>
+<audio id="audio1"
+  src="https://parthgvu.github.io/resume/a.mp3"
+  preload="auto"
+  playsinline>
+</audio><audio id="audio2"
+  src="https://parthgvu.github.io/resume/c.mp3"
+  preload="auto"
+  playsinline>
+</audio><audio id="audio3"
+  src="https://parthgvu.github.io/resume/b.mp3"
+  preload="auto"
+  playsinline>
+</audio><audio id="audio4"
+  src="https://parthgvu.github.io/resume/d.mp3"
+  preload="auto"
+  playsinline>
+</audio><audio id="audio5"
+  src="https://parthgvu.github.io/resume/e.mp3"
+  preload="auto"
+  playsinline>
+</audio>
 
     <script>
 let currentAudio = null;
 
 function playDescriptionAudio(audioId) {
-    if (currentAudio) {
+    const audio = document.getElementById(audioId);
+    if (!audio) return;
+
+    if (currentAudio && currentAudio !== audio) {
         currentAudio.pause();
         currentAudio.currentTime = 0;
     }
 
-    const audio = document.getElementById(audioId);
-    if (!audio) return;
-
-    audio.currentTime = 0;
     audio.muted = false;
+    audio.currentTime = 0;
 
     audio.play()
-        .then(() => {
-            currentAudio = audio;
-        })
-        .catch(err => {
-            console.log("Playback blocked:", err);
-        });
+        .then(() => currentAudio = audio)
+        .catch(err => console.error("Audio blocked:", err));
 }
 
-document.addEventListener('click', function unlockAudio() {
-    document.querySelectorAll('audio').forEach(audio => {
-        audio.play().then(() => {
-            audio.pause();
-            audio.currentTime = 0;
-        }).catch(() => {});
-    });
 
-    document.removeEventListener('click', unlockAudio);
-});
+
+
+  
         function openModal(modalId) {
             document.getElementById(modalId).style.display = "block";
         }
@@ -1040,44 +1046,9 @@ function openImgViewer(src) {
 function closeImgViewer() {
     document.getElementById("imgViewer").style.display = "none";
 }
-function openFullscreenVideo(videoSrc) {
-    // Pause the original small-screen video
-    if (currentVideo) {
-        currentVideo.pause();
-    }
 
-    // Show the fullscreen video
-    document.getElementById('fullscreenVideo').style.display = "flex";
-    const fullscreenVideoContent = document.getElementById('fullscreenVideoContent');
-    fullscreenVideoContent.src = videoSrc;
-    fullscreenVideoContent.play();
-}
 
-function closeFullscreenVideo() {
-    // Hide the fullscreen video
-    document.getElementById('fullscreenVideo').style.display = "none";
-    const fullscreenVideoContent = document.getElementById('fullscreenVideoContent');
 
-    // Stop the fullscreen video and reset its source
-    fullscreenVideoContent.pause();
-    fullscreenVideoContent.src = "";
-
-    // Resume the original small-screen video from where it was paused
-    if (currentVideo) {
-        currentVideo.play();
-    }
-}
-
-// Capture the video click event to set the current video
-document.querySelectorAll('.video-section video').forEach(video => {
-    video.addEventListener('click', function () {
-        currentVideo = this; // Store the clicked video as the small-screen video
-        openFullscreenVideo(this.src); // Open the fullscreen with the video source
-    });
-});
-
-// Event listener for closing fullscreen using the close button
-document.querySelector('.close-fullscreen').addEventListener('click', closeFullscreenVideo);
         function goBackHome() {
         document.getElementById("projectsPage").style.display = "none";
         document.getElementById("homePage").style.display = "flex";
@@ -1085,6 +1056,7 @@ document.querySelector('.close-fullscreen').addEventListener('click', closeFulls
     function goBackMain() {
     window.history.back();
 }
+
 
     </script>
 
