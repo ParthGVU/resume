@@ -445,28 +445,26 @@
 /* ================= MOBILE DESKTOP-MODE POPUP ================= */
 
 
-/* ================= MOBILE DESKTOP-MODE POPUP ================= */
-
 #desktop-popup {
-  display: none;
+  display: none;   /* default hidden */
   position: fixed;
   top: 0;
+  box-sizing: border-box;
   left: 0;
   width: 100%;
-  min-height: 56px;
-
   background-color: #FFD700;
   color: #000;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 12px 12px 12px 16px;
-
+  padding: 12px 14px;
   font-size: 14px;
-  z-index: 9999; /* 🔥 VERY IMPORTANT */
+  z-index: 9999;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  align-items: center;
+  gap: 10px;
+}
+
+#desktop-popup-text {
+  flex: 1;                 /* takes remaining space */
+  line-height: 1.4;
 }
 
 
@@ -477,10 +475,7 @@
   color: #007bff;
 }
 
-/* Close button */
 #desktop-popup span {
-  flex-shrink: 0;
-
   width: 32px;
   height: 32px;
 
@@ -488,24 +483,26 @@
   color: #FFD700;
 
   border-radius: 50%;
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 20px;
+  font-weight: 700;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   cursor: pointer;
+  line-height: 1;
+  flex-shrink: 0;          /* 🔥 prevents shrinking */
 
-  z-index: 10000;     /* 🔥 ABSOLUTE TOP */
-  position: relative; /* 🔥 KEY FIX */
+  transition: background 0.2s ease, transform 0.2s ease;
 }
-
 
 #desktop-popup span:hover {
   background: red;
   color: white;
+  transform: scale(1.05);
 }
+
 
 body.popup-visible {
   padding-top: 64px;   /* reserve space for popup */
@@ -541,10 +538,12 @@ body.popup-visible .navbar {
 <body id="start-section">
 <!-- Desktop Mode Suggestion Popup -->
 <div id="desktop-popup">
-  📢 For the best viewing experience, please enable <b>Desktop Mode</b> on your browser.
+  <div id="desktop-popup-text">
+    📢 For the best viewing experience, please enable <b>Desktop Mode</b> on your browser.
+  </div>
   <span onclick="closePopup()" aria-label="Close popup">✕</span>
-
 </div>
+
 
    <!-- Navigation Bar -->
 <div class="navbar">
