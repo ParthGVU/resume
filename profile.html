@@ -513,15 +513,21 @@
 }
 
 
-/* Slide animation */
 #desktop-popup {
-  animation: slideDown 0.35s ease;
+  animation: fadeDown 0.3s ease;
 }
 
-@keyframes slideDown {
-  from { transform: translateY(-100%); }
-  to   { transform: translateY(0); }
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    top: -10px;
+  }
+  to {
+    opacity: 1;
+    top: 0;
+  }
 }
+
 
 
 .contact-icons {
