@@ -256,6 +256,9 @@
     padding: 10px 0; /* Padding for the navbar */
     z-index: 1000; /* Keep the navbar above other elements */
 }
+body.popup-visible .navbar {
+  top: 40px; /* height of popup */
+}
 
 .navbar a {
     color: white; /* Text color */
@@ -346,7 +349,11 @@
   }
 }
 
-@media (max-width: 768px) { body { font-size: 14px; } }
+/* 📱 EXTRA SMALL DEVICES */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
 
   .section-text h2 {
     font-size: 1.6em;
@@ -421,11 +428,39 @@
   }
 }
 
+/* Desktop mode popup */
+#desktop-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #ffcc00;
+  color: #000;
+  font-size: 14px;
+  padding: 10px 40px 10px 15px;
+  text-align: center;
+  z-index: 2000;
+  display: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+#desktop-popup span {
+  position: absolute;
+  right: 15px;
+  top: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
 
     </style>
     
 </head>
 <body id="start-section">
+<!-- Desktop Mode Suggestion Popup -->
+<div id="desktop-popup">
+  📢 For the best viewing experience, please enable <b>Desktop Mode</b> on your browser.
+  <span onclick="closePopup()">✕</span>
+</div>
 
    <!-- Navigation Bar -->
 <div class="navbar">
@@ -454,14 +489,27 @@
 <!-- Fifth Section - Vishwakarma University -->
 <div class="section alternate-left" id="vu-section">
     <img src="VU.png" alt="Vishwakarma University" onclick="openModal(this)">
+
     <div class="section-text">
-        <h2>Vishwakarma University <a href="https://www.google.com/maps?q=Vishwakarma+University,+Pune,+India" target="_blank"><img src="gps.png" alt="GPS Icon" class="gps-icon"></a> <a href="https://vupune.ac.in" target="_blank"><img src="WEB.jpg" alt="Website Icon" class="website-icon"></a></h2>
-        <p>
+        <h2>
+            Vishwakarma University 
+            <a href="https://www.google.com/maps?q=Vishwakarma+University,+Pune,+India" target="_blank">
+                <img src="gps.png" alt="GPS Icon" class="gps-icon">
+            </a>
+            <a href="https://vupune.ac.in" target="_blank">
+                <img src="WEB.jpg" alt="Website Icon" class="website-icon">
+            </a>
+        </h2>
+<p>
   Bachelor's degree in Computer Engineering from Vishwakarma University.
   <span class="cgpa">[ 8.5 CGPA ]</span>
 </p>
+
+<a href="vu.html" class="button">View Details</a>
+
     </div>
 </div>
+
 
 
 <!-- Certificates Section -->
@@ -485,17 +533,26 @@
 <div class="section alternate-right" id="twelfth-section">
     <div class="section-text">
         <h2>12th Grade Education</h2>
-        <p>Completed 12th in Science stream from Late Jyoti Janolkar Vidyalaya, Akola.</p>
+        <p>
+  Completed 12th in Science stream from Late Jyoti Janolkar Vidyalaya, Akola.
+  <span class="cgpa">[ 83 % ]</span>
+</p>
+
         <a href="12th-grade.html" class="button">More Details</a> <!-- Button Added -->
     </div>
     <img src="AKOLA.jpeg" alt="12th Grade" onclick="openModal(this)">
+    
 </div>
 <!-- Third Section - 10th Grade Education -->
 <div class="section alternate-left" id="tenth-section">
     <img src="SCHOOL.jpeg" alt="10th Grade" onclick="openModal(this)">
     <div class="section-text">
         <h2>10th Grade Education</h2>
-        <p>Passed 10th from Shri Gajanan Maharaj English Medium School, Shegaon.</p>
+        <p>
+  Passed 10th from Shri Gajanan Maharaj English Medium School, Shegaon.
+  <span class="cgpa">[ 91 % ]</span>
+</p>
+
         <a href="10th-grade.html" class="button">More Details</a> <!-- Button Added -->
     </div>
 </div>
@@ -614,8 +671,20 @@
     document.getElementById("downloadResume").style.display = "block";
   }
 </script>
+<script>
+  if (window.innerWidth <= 768) {
+    const popup = document.getElementById("desktop-popup");
+    popup.style.display = "block";
+    document.body.classList.add("popup-visible");
+  }
+
+  function closePopup() {
+    document.getElementById("desktop-popup").style.display = "none";
+    document.body.classList.remove("popup-visible");
+  }
+</script>
+
 
 </body>
 </html>
-
 
