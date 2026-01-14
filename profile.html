@@ -141,7 +141,7 @@
     
         /* Modal for fullscreen image */
         .modal {
-            display: none;
+            display: flex;
             position: fixed;
             z-index: 1001;
             left: 0;
@@ -257,11 +257,7 @@
     padding: 10px 0; /* Padding for the navbar */
     z-index: 1000; /* Keep the navbar above other elements */
 }
-@media (max-width: 768px) {
-  body.popup-visible {
-    padding-top: 48px;
-  }
-}
+
 
 
 .navbar a {
@@ -277,6 +273,11 @@
     border-radius: 5px; /* Rounded corners on hover */
 }
 @media (max-width: 768px) {
+.section-text a.button {
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+}
 
   /* Navbar */
   .navbar {
@@ -447,87 +448,56 @@
 /* ================= MOBILE DESKTOP-MODE POPUP ================= */
 
 
-
-/* Bold Desktop Mode */
-#desktop-popup b {
-  font-weight: 800;
-  color: #00bfff;
-}
+/* ================= MOBILE DESKTOP-MODE POPUP ================= */
 
 #desktop-popup {
   display: none;
   position: fixed;
-  top: 55px;                /* below navbar */
+  top: 0;                 /* ✅ always at very top */
   left: 0;
   width: 100%;
   background-color: #FFD700;
   color: #000;
   padding: 14px 48px 14px 15px;
   font-size: 14px;
-  z-index: 5000;
+  z-index: 6000;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
+#desktop-popup b {
+  font-weight: 800;
+  color: #007bff;
+}
+
+/* Close button */
 #desktop-popup span {
   position: absolute;
   top: 50%;
   right: 12px;
   transform: translateY(-50%);
-
-  width: 34px;
-  height: 34px;
-
+  width: 32px;
+  height: 32px;
+  background: #000;
+  color: #FFD700;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  font-size: 20px;
-  font-weight: 900;
-
-  background: #000;
-  color: #FFD700;
-
-  border-radius: 50%;
   cursor: pointer;
-
-  z-index: 9999;
 }
-
-#desktop-popup span:active {
-  transform: translateY(-50%) scale(0.95);
-}
-
-
-
 
 #desktop-popup span:hover {
   background: red;
   color: white;
 }
 
-
-/* REMOVE YELLOW TAP HIGHLIGHT */
-#desktop-popup,
-#desktop-popup * {
-  -webkit-tap-highlight-color: transparent;
+body.popup-visible .navbar {
+  top: auto;
+  transform: translateY(56px);
 }
 
-
-
-#desktop-popup {
-  animation: fadeDown 0.3s ease;
-}
-
-@keyframes fadeDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 
 
@@ -547,7 +517,8 @@
 <!-- Desktop Mode Suggestion Popup -->
 <div id="desktop-popup">
   📢 For the best viewing experience, please enable <b>Desktop Mode</b> on your browser.
-  <span onclick="closePopup()">✕</span>
+  <span onclick="closePopup()" aria-label="Close popup">✕</span>
+
 </div>
 
    <!-- Navigation Bar -->
@@ -753,29 +724,25 @@
             .then(() => alert('Email copied to clipboard!'))
             .catch(err => console.error('Could not copy email: ', err));
     }
-</script>
-<script>
+    const popup = document.getElementById("desktop-popup");
+
+if (
+  window.innerWidth <= 768 &&
+  /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+) {
+  popup.style.display = "block";
+  document.body.classList.add("popup-visible");
+}
+
+function closePopup() {
+  popup.style.display = "none";
+  document.body.classList.remove("popup-visible");
+}
   function showDownload() {
     document.getElementById("downloadResume").style.display = "block";
   }
 </script>
-<script>
-  const popup = document.getElementById("desktop-popup");
 
-  // Show ONLY on real mobile devices
-  if (
-    window.innerWidth <= 768 &&
-    /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
-  ) {
-    popup.style.display = "block";
-    document.body.classList.add("popup-visible");
-  }
-
-  function closePopup() {
-    popup.style.display = "none";
-    document.body.classList.remove("popup-visible");
-  }
-</script>
 
 </body>
 </html>
