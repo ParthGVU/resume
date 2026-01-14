@@ -441,7 +441,30 @@ body.popup-visible .navbar {
   text-decoration: underline;
 }
 
+/* ================= MOBILE DESKTOP-MODE POPUP ================= */
 
+#desktop-popup {
+  display: none;                 /* ❌ hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #000;        /* ✅ BLACK background */
+  color: #fff;
+  padding: 12px 45px 12px 15px;
+  font-size: 14px;
+  z-index: 2000;
+  box-shadow: 0 2px 6px rgba(255,255,255,0.15);
+  animation: slideDown 0.35s ease;
+}
+
+/* Bold Desktop Mode text */
+#desktop-popup b {
+  font-weight: 800;
+  color: #00bfff;                /* highlight (not yellow) */
+}
+
+/* Close (X) button */
 #desktop-popup span {
   position: absolute;
   right: 12px;
@@ -451,13 +474,21 @@ body.popup-visible .navbar {
   cursor: pointer;
   padding: 4px 8px;
   border-radius: 50%;
-  transition: background 0.2s, color 0.2s;
+  color: white;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 #desktop-popup span:hover {
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.15);
   color: red;
 }
+
+/* Slide animation */
+@keyframes slideDown {
+  from { transform: translateY(-100%); }
+  to   { transform: translateY(0); }
+}
+
 
 .contact-icons {
   display: flex;              /* ✅ makes horizontal */
@@ -687,8 +718,10 @@ body.popup-visible .navbar {
   }
 </script>
 <script>
-  // Show popup every time on mobile
-  if (window.innerWidth <= 768) {
+ if (
+    window.innerWidth <= 768 &&
+    /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+  ) {
     document.getElementById("desktop-popup").style.display = "block";
     document.body.classList.add("popup-visible");
   }
