@@ -323,6 +323,21 @@
 .home-btn:hover {
     background-color: #0056b3;
 }
+.speak-button {
+    background-color: #17a2b8;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin: 10px 0;
+    font-size: 0.9em;
+}
+
+.speak-button:hover {
+    background-color: #117a8b;
+}
+
 
 /* Back button on Home */
 .home-back {
@@ -556,6 +571,11 @@
 <div id="modal1" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal1')">&times;</span>
+<button class="speak-button" onclick="playDescriptionAudio('audio1')">
+    🔊 Listen Description
+</button>
+
+<audio id="audio1" src="/1.mp3"></audio>
 
     <h2>🏦 VaultUp – Secure Goal-Based Savings & Investment Platform</h2>
 
@@ -622,6 +642,12 @@
 <div id="modal3" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal3')">&times;</span>
+<button class="speak-button" onclick="playDescriptionAudio('audio2')">
+    🔊 Listen Description
+</button>
+
+<audio id="audio2" src="/3.mp3"></audio>
+
 
     <h2>🧠 Employee Burnout Detection & Productivity Monitoring System</h2>
 
@@ -706,6 +732,12 @@
 <div id="modal2" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal2')">&times;</span>
+<button class="speak-button" onclick="playDescriptionAudio('audio3')">
+    🔊 Listen Description
+</button>
+
+<audio id="audio3" src="/2.mp3"></audio>
+
 
     <h2>📊 Business Decision Intelligence Platform (BDIP)</h2>
     <p class="subtitle">📌 Complete System Explanation</p>
@@ -793,6 +825,12 @@
 <div id="modal4" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal4')">&times;</span>
+<button class="speak-button" onclick="playDescriptionAudio('audio4')">
+    🔊 Listen Description
+</button>
+
+<audio id="audio4" src="/4.mp3"></audio>
+
 
     <h2>🌾 Smart Farming AI Assistant</h2>
     <h4>AI + Weather + Mandi Rates for Farmers 🚜</h4>
@@ -851,6 +889,12 @@
 <div id="modal5" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal5')">&times;</span>
+<button class="speak-button" onclick="playDescriptionAudio('audio5')">
+    🔊 Listen Description
+</button>
+
+<audio id="audio5" src="/5.mp3"></audio>
+
 
     <h2>🔐 User Authentication & OTP Verification System</h2>
 
@@ -910,6 +954,22 @@
 <button class="back-button" onclick="goBackHome()">Back</button>
 
     <script>
+        let currentAudio = null;
+
+function playDescriptionAudio(audioId) {
+    // stop previous audio
+    if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+    }
+
+    const audio = document.getElementById(audioId);
+    if (audio) {
+        currentAudio = audio;
+        audio.play().catch(err => console.log(err));
+    }
+}
+
         function openModal(modalId) {
             document.getElementById(modalId).style.display = "block";
         }
@@ -919,8 +979,15 @@
         }
 
         function closeModal(modalId) {
-            document.getElementById(modalId).style.display = "none";
-        }
+    document.getElementById(modalId).style.display = "none";
+
+    if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        currentAudio = null;
+    }
+}
+
 
         function openFullscreen(imgSrc) {
             document.getElementById('fullscreenImg').style.display = "flex";
@@ -998,4 +1065,3 @@ document.querySelector('.close-fullscreen').addEventListener('click', closeFulls
 
 </body>
 </html>
-
