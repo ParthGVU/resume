@@ -445,20 +445,20 @@
 }
 
 /* ================= MOBILE DESKTOP-MODE POPUP ================= */
-
 #desktop-popup {
   display: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #000 !important;   /* ✅ FORCE BLACK */
-  color: #fff;
+  background-color: #FFD700 !important; /* ✅ YELLOW background */
+  color: #000;                          /* black text for contrast */
   padding: 12px 50px 12px 15px;
   font-size: 14px;
   z-index: 3000;
-  box-shadow: 0 2px 8px rgba(255,255,255,0.2);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
+
 
 /* Bold Desktop Mode */
 #desktop-popup b {
@@ -476,8 +476,8 @@
   font-weight: bold;
   cursor: pointer;
 
-  background: #222;              /* ✅ visible bg */
-  color: white;
+ background: #000;   /* black circle */
+  color: #FFD700; 
 
   padding: 6px 10px;
   border-radius: 50%;
