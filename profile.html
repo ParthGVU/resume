@@ -466,25 +466,37 @@
   color: #00bfff;
 }
 
-/* Close (X) — MAKE IT VISIBLE */
 #desktop-popup span {
   position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 20px;
+
+  /* ✅ SAFE AREA FIX */
+  top: calc(12px + env(safe-area-inset-top));
+  right: calc(12px + env(safe-area-inset-right));
+
+  font-size: 22px;
   font-weight: bold;
+
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   cursor: pointer;
 
- background: #000;   /* black circle */
-  color: #FFD700; 
+  background: #000;
+  color: #FFD700;
 
-  padding: 6px 10px;
   border-radius: 50%;
   line-height: 1;
 
+  z-index: 9999;              /* ✅ ABOVE EVERYTHING */
+  pointer-events: auto;       /* ✅ CLICKABLE */
+
   transition: background 0.2s ease, color 0.2s ease;
 }
+
 
 #desktop-popup span:hover {
   background: red;
@@ -495,6 +507,9 @@
 #desktop-popup,
 #desktop-popup * {
   -webkit-tap-highlight-color: transparent;
+}
+#desktop-popup {
+  padding-top: calc(12px + env(safe-area-inset-top));
 }
 
 
