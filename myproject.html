@@ -1004,6 +1004,14 @@ document.addEventListener('click', function unlockAudio() {
         currentAudio = null;
     }
 }
+document.addEventListener('click', function unlockAudio() {
+    document.querySelectorAll('audio').forEach(audio => {
+        audio.play().then(() => {
+            audio.pause();
+            audio.currentTime = 0;
+        }).catch(() => {});
+    });
+}, { once: true });
 
 
         function openFullscreen(imgSrc) {
