@@ -735,6 +735,32 @@ body.popup-visible .navbar {
   }
 }
 
+/* ===== ABOUT MODAL ACTIONS ===== */
+.about-actions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.about-resume-btn {
+  padding: 12px 24px;
+  font-size: 1em;
+  font-weight: 600;
+
+  background-color: transparent;
+  color: white;
+
+  border: 2px solid white;
+  border-radius: 8px;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.about-resume-btn:hover {
+  background-color: white;
+  color: black;
+}
 
     </style>
     
@@ -766,6 +792,11 @@ body.popup-visible .navbar {
   <div class="about-content">
     <span class="about-close" onclick="closeAbout()">✕</span>
     <h3>About Me</h3>
+<div class="about-actions">
+  <button class="about-resume-btn" onclick="openResumeFromAbout()">
+    📄 View Resume
+  </button>
+</div>
 
 <p>
    My name is <b>Parth V. Gaikwad</b>, and I am from <b>Shegaon, Maharashtra</b>.I am someone
@@ -1064,12 +1095,13 @@ function closePopup() {
   popup.style.display = "none";
   document.body.classList.remove("popup-visible");
 }
-</script>
-<script>
+
 function openAbout() {
   document.getElementById("about-modal").style.display = "flex";
 }
-
+function openResumeFromAbout() {
+  window.open("PVG Resume.pdf", "_blank");
+}
 function closeAbout() {
   document.getElementById("about-modal").style.display = "none";
 }
