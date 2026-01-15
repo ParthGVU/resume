@@ -604,6 +604,136 @@ body.popup-visible .navbar {
     margin: 20px 0;
   }
 }
+/* ===== ABOUT ME INFO MODAL ===== */
+/* ===== PROFESSIONAL INFO BUTTON ===== */
+.info-btn {
+  margin-left: 10px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: #000;          /* Black background */
+  color: #fff;                     /* White "i" */
+  border: 2px solid #fff;          /* White outline */
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all 0.25s ease;
+}
+
+.info-btn:hover {
+  background-color: #fff;          /* Invert on hover */
+  color: #000;
+}
+
+/* ===== ABOUT ME MODAL — FINAL FIX ===== */
+#about-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+
+  background: rgba(0, 0, 0, 0.8);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 60px; /* ✅ equal space from all sides */
+  box-sizing: border-box;
+}
+
+/* Modal box */
+.about-content {
+  width: 100%;
+  max-width: 750px;
+  max-height: calc(100vh - 120px); /* ✅ NEVER goes out */
+
+  overflow-y: auto; /* scroll inside if needed */
+
+  background: rgba(47, 0, 0, 0.853); /* 🔴 subtle red transparency */
+  border: 2px solid white;          /* ⬜ white border */
+
+  border-radius: 14px;
+  padding: 40px 45px;
+
+  color: white;
+  position: relative;
+
+  text-align: left;
+  line-height: 1.7;
+
+  box-shadow: 0 20px 45px rgba(0,0,0,0.7);
+}
+
+/* Title */
+.about-content h3 {
+  text-align: center;
+  font-size: 2.1em;
+  margin-bottom: 26px;
+  letter-spacing: 1px;
+}
+
+/* Paragraphs */
+.about-content p {
+  font-size: 1.1em;
+  margin-bottom: 16px;
+}
+
+/* Close button */
+.about-close {
+  position: sticky;      /* stays visible when scrolling */
+  top: 0;
+  float: right;
+
+  width: 34px;
+  height: 34px;
+
+  background: black;
+  border: 2px solid white;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+
+  margin-bottom: 10px;
+  transition: all 0.25s ease;
+}
+
+.about-close:hover {
+  background: red;
+  border-color: red;
+}
+
+/* 📱 Mobile */
+@media (max-width: 768px) {
+  #about-modal {
+    padding: 30px;
+  }
+
+  .about-content {
+    padding: 26px 22px;
+  }
+
+  .about-content h3 {
+    font-size: 1.7em;
+  }
+
+  .about-content p {
+    font-size: 1.05em;
+  }
+}
+
 
     </style>
     
@@ -631,6 +761,59 @@ body.popup-visible .navbar {
     <a href="#contact-section">Contact</a>
 </div>
 
+<div id="about-modal">
+  <div class="about-content">
+    <span class="about-close" onclick="closeAbout()">✕</span>
+    <h3>About Me</h3>
+
+<p>
+   My name is <b>Parth V. Gaikwad</b>, and I am from <b>Shegaon, Maharashtra</b>.I am someone
+  who believes in balancing creativity, leadership, and technology in everything
+  I do. I enjoy exploring new ideas, connecting with people, and constantly
+  learning through experiences.
+</p>
+
+<p>
+  I have a strong passion for <b>organising and managing events</b>. Planning,
+  coordinating, and bringing people together gives me a sense of responsibility
+  and satisfaction. Being involved in event management has helped me develop
+  leadership skills, teamwork, and the ability to handle pressure with confidence.
+</p>
+<p>
+  On the technical side, I have a strong interest in <b>coding and technology</b>.
+  I enjoy solving problems, building projects, and turning ideas into working
+  solutions through code. Coding excites me because it combines logic, creativity,
+  and innovation.
+</p>
+<p>
+  I am also deeply inclined towards <b>writing poems</b>. Poetry allows me to
+  express thoughts, emotions, and life experiences in a creative and meaningful
+  way. It is one of the ways I connect with myself and with others on a deeper
+  level.
+</p>
+
+<p>
+  Apart from this, I love to <b>play badminton</b>, which helps me stay active,
+  disciplined, and focused. Sports have taught me the importance of consistency,
+  strategy, and perseverance.
+</p>
+
+<p>
+  I am a highly <b>social person</b> who enjoys meeting new people, having
+  meaningful conversations, and building strong connections. I believe
+  communication and collaboration are key to personal and professional growth.
+</p>
+
+
+
+<p>
+  Overall, I see myself as a <b>creative thinker, an organizer, a poet, a
+  technologist, and a people-oriented individual</b> who is always eager to grow,
+  learn, and contribute positively wherever I go.
+</p>
+
+  </div>
+</div>
 
     <div class="container">
         <!-- First Section - Parth's Image and Details -->
@@ -638,7 +821,11 @@ body.popup-visible .navbar {
             <img src="PVG 2.jpg" alt="Parth Gaikwad" onclick="openModal(this)">
 
             <div class="section-text">
-                <h2>Parth Gaikwad</h2>
+                <h2>
+  Parth Gaikwad
+  <button class="info-btn" onclick="openAbout()">i</button>
+</h2>
+
                 <p>Analytical professional skilled in working with data, identifying patterns, and transforming information into clear, actionable insights to support informed decision making.</p>
             </div>
         </div>
@@ -875,6 +1062,15 @@ if (isMobileDevice() && isMobileScreen()) {
 function closePopup() {
   popup.style.display = "none";
   document.body.classList.remove("popup-visible");
+}
+</script>
+<script>
+function openAbout() {
+  document.getElementById("about-modal").style.display = "flex";
+}
+
+function closeAbout() {
+  document.getElementById("about-modal").style.display = "none";
 }
 </script>
 
