@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organised Events | Parth Gaikwad</title>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Playfair Display', serif;
+  background-color: #000;
+  color: white;
+}
+
+/* BACK BUTTON */
+.back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 8px 14px;
+  background-color: #111;
+  color: white;
+  text-decoration: none;
+  border: 2px solid #444;
+  border-radius: 6px;
+  z-index: 1000;
+}
+
+.back-btn:hover {
+  background-color: #007bff;
+}
+
+/* PAGE */
+.container {
+  min-height: 100vh;
+  padding: 90px 20px 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.events-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+/* COLUMN */
+.event-column {
+  background: #111;
+  border: 2px solid #444;
+  border-radius: 14px;
+  padding: 25px 20px;
+  text-align: center;
+}
+
+.event-column h2 {
+  color: #00bfff;
+  font-size: 2em;
+}
+
+.event-column h4 {
+  color: #44ff00;
+  margin-bottom: 20px;
+}
+
+/* EVENT CARD */
+.event-card {
+  margin-bottom: 25px;
+}
+
+/* ===== UNIFORM EVENT IMAGES ===== */
+.event-card img {
+  width: 260px;
+  height: 180px;              /* SAME height everywhere */
+  object-fit: cover;          /* crop nicely */
+  border-radius: 10px;
+  border: 3px solid white;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+.event-card {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.event-card h5 {
+  color: #ffd700;
+  font-size: 1.2em;
+}
+
+.event-card p {
+  font-size: 1em;
+  line-height: 1.55;
+  color: #ddd;
+}
+
+/* MEDIA BUTTON */
+.media-btn {
+  margin-top: 15px;
+  padding: 10px 18px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.media-btn:hover {
+  background: #0056b3;
+}
+
+/* MEDIA MODAL */
+.media-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  z-index: 9999;
+  overflow-y: auto;
+  padding: 40px 20px;
+}
+
+.media-close {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.media-content {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+/* ===== MODAL MEDIA SIZE ===== */
+.media-content img {
+  width: 100%;
+  max-width: 720px;
+  height: 420px;
+  object-fit: contain;   /* no crop in modal */
+  margin-bottom: 24px;
+  border-radius: 12px;
+}
+
+.media-content video {
+  width: 100%;
+  max-width: 720px;
+  height: 420px;
+  margin-bottom: 24px;
+  border-radius: 12px;
+  background: black;
+}
+
+
+.media-label {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+/* ===== MEDIA DETAILS ===== */
+.media-item {
+  margin-bottom: 30px;
+}
+
+.media-title {
+  font-size: 1.1em;
+  color: #ffd700;
+  margin-bottom: 6px;
+}
+
+.media-desc {
+  font-size: 0.95em;
+  color: #ccc;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+/* IMAGE ZOOM */
+.image-zoom {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  z-index: 10000;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-zoom img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+}
+
+.image-zoom span {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  font-size: 36px;
+  cursor: pointer;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .events-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<a href="profile.html" class="back-btn">← Back</a>
+
+<div class="container">
+<div class="events-wrapper">
+
+<!-- ================= COLLEGE SECOND YEAR ================= -->
+<div class="event-column">
+<h2>College Second Year</h2>
+<h4>2023 – 2024</h4>
+
+<div class="event-card">
+<img src="/vhue/s/sg.jpeg" onclick="zoomImage(this)">
+<h5>Ganesh Utsav – Hostel Level</h5>
+<p>
+Independently organized Ganesh Utsav at Vishwakarma Boys Hostel, Malik Nagar,
+Kondhwa, Pune for <b>150 students</b>. Managed sponsorships, budgeting,
+planning, logistics, rituals, and execution entirely on my own.
+</p>
+</div>
+
+<button class="media-btn" onclick="openMedia('second')">More Images & Videos</button>
+</div>
+
+<!-- ================= COLLEGE THIRD YEAR ================= -->
+<div class="event-column">
+<h2>College Third Year</h2>
+<h4>2024 – 2025</h4>
+
+<div class="event-card">
+<img src="/vhue/t/tg3.jpeg" onclick="zoomImage(this)">
+<h5>Ganesh Utsav – Expanded Scale</h5>
+<p>
+Solely organized Ganesh Utsav for <b>200 students</b>, including sponsor
+coordination, volunteer management, budgeting, and full event execution.
+</p>
+</div>
+
+<div class="event-card">
+<img src="/vhue/t/ts1.jpeg" onclick="zoomImage(this)">
+<h5>Games (Online & Offline)</h5>
+<p>
+<b>Online Games:</b> BGMI, Free Fire, Chess (Chess.com)<br>
+<b>Offline Games:</b> Badminton, Cricket, Football<br>
+Planned schedules, managed teams, and conducted fair competitions.
+</p>
+</div>
+
+<div class="event-card">
+<img src="/vhue/t/tm4.jpeg" onclick="zoomImage(this)">
+<h5>Maha Bhojan</h5>
+<p>
+Successfully organized Maha Bhojan for hostel students, managing food
+arrangements, volunteers, hygiene, and smooth distribution.
+</p>
+</div>
+
+<div class="event-card">
+<img src="/vhue/t/tnb11.jpeg" onclick="zoomImage(this)">
+<h5>
+Donated Ganesh Murti and contributed for 5 days.<br>
+Received formal appreciation from Nirankar Balgram authorities.
+</h5>
+<p>
+Actively supported daily activities and contributed time and effort at
+Nirankar Balgram, Vastigruh, Hadapsar, Pune.
+</p>
+</div>
+
+<button class="media-btn" onclick="openMedia('third')">More Images & Videos</button>
+</div>
+
+<!-- ================= COLLEGE FINAL YEAR ================= -->
+<div class="event-column">
+<h2>College Final Year</h2>
+<h4>2025 – 2026</h4>
+
+<div class="event-card">
+<img src="/vhue/f/lg4.jpeg" onclick="zoomImage(this)">
+<h5>Ganesh Utsav – Grand Event</h5>
+<p>
+Led Ganesh Utsav organization for <b>250 students</b>, handling sponsorships,
+finances, discipline, logistics, and complete execution independently.
+</p>
+</div>
+
+<div class="event-card">
+<img src="/vhue//f/ls3.jpeg" onclick="zoomImage(this)">
+<h5>Games (Online & Offline)</h5>
+<p>
+<b>Online Games:</b> BGMI, Free Fire, Chess (Chess.com)<br>
+<b>Offline Games:</b> Badminton, Cricket, Football, Table Tennis (TT)<br>
+Oversaw planning, execution, and award distribution.
+</p>
+</div>
+
+<div class="event-card">
+<img src="/vhue//f/lib.jpeg" onclick="zoomImage(this)">
+<h5>Maha Bhojan</h5>
+<p>
+Organized large-scale Maha Bhojan, coordinating food vendors, volunteers,
+and maintaining discipline and cleanliness.
+</p>
+</div>
+
+<div class="event-card">
+<img src="/vhue//f/lnb2.jpeg" onclick="zoomImage(this)">
+<h5>
+Donated Ganesh Murti and contributed for 5 days.<br>
+Received formal appreciation from Nirankar Balgram authorities.
+</h5>
+<p>
+Continued social service and community contribution at
+Nirankar Balgram, Vastigruh, Hadapsar, Pune.
+</p>
+</div>
+
+<button class="media-btn" onclick="openMedia('final')">More Images & Videos</button>
+</div>
+
+
+<!-- MEDIA MODAL -->
+<div id="mediaModal" class="media-modal">
+<span class="media-close" onclick="closeMedia()">✕</span>
+<div class="media-content" id="mediaContent"></div>
+</div>
+
+<!-- IMAGE ZOOM -->
+<div id="imageZoom" class="image-zoom">
+<span onclick="closeZoom()">✕</span>
+<img id="zoomedImg">
+</div>
+
+<script>
+function openMedia(year) {
+const media = {
+  second: {
+    imgs: [
+      {
+        src: "vhue/s/sg.jpeg",
+        title: "Ganesh Utsav",
+        desc: "Ganesh Murti."
+      }
+    ],
+    vids: [
+{
+  src: "vhue/s/sv1.mp4",
+  title: "Ganesh Utsav – Event Highlights",
+  desc: "A short visual overview capturing the key moments of Ganesh Utsav celebrations, including student participation and overall event ambience."
+},
+{
+  src: "vhue/s/sv2.mp4",
+  title: "Ganesh Aarti Ceremony",
+  desc: "Evening Aarti performed with collective participation of hostel students, reflecting devotion, discipline, and cultural unity."
+},
+{
+  src: "vhue/s/sv3.mp4",
+  title: "Ganesh Pooja Ritual",
+  desc: "Traditional Ganesh Pooja conducted as part of the Utsav, following proper rituals and maintaining a respectful spiritual environment."
+}
+
+    ]
+  },
+
+  third: {
+    imgs: [
+  {
+    src: "vhue/t/tg3.jpeg",
+    title: "Ganesh Utsav – Third Year Celebration",
+    desc: "Ganesh Utsav organized at hostel level with increased student participation, reflecting strong coordination, planning, and leadership."
+  },
+  {
+    src: "vhue/t/ts1.jpeg",
+    title: "Games Events – Student Participation",
+    desc: "Multiple online and offline games conducted during Ganesh Utsav to promote teamwork, engagement, and healthy competition."
+  },
+  {
+    src: "vhue/t/ts6.jpeg",
+    title: "Prize Distribution Ceremony",
+    desc: "Prize distribution organized for winners of various game events, recognizing performance and encouraging active participation."
+  },
+  {
+    src: "vhue/t/ts4.jpeg",
+    title: "Awards Presented to Winners",
+    desc: "Awards and trophies presented to winning participants as part of the event’s closing ceremony."
+  },
+  {
+    src: "vhue/t/tnb6.jpeg",
+    title: "Visit to Nirankar Balgram",
+    desc: "Visit to Nirankar Balgram (Anath Ashram) as part of social service activities conducted during Ganesh Utsav."
+  },
+  {
+    src: "vhue/t/tnb7.jpeg",
+    title: "Food Donation at Nirankar Balgram",
+    desc: "Food donated to children at Nirankar Balgram, contributing to their daily needs and overall well-being."
+  },
+  {
+    src: "vhue/t/tnb8.jpeg",
+    title: "Ganesh Utsav Celebration with Children",
+    desc: "Celebrated Ganesh Utsav with children at Nirankar Balgram, spreading joy, inclusion, and cultural values."
+  },
+  {
+    src: "vhue/t/tnb9.jpeg",
+    title: "Smiles at Nirankar Balgram",
+    desc: "Moments capturing the happiness and smiles of children at Nirankar Balgram during the visit."
+  },
+  {
+    src: "vhue/t/tnm5.jpeg",
+    title: "Appreciation Certificate – Nirankar Balgram",
+    desc: "Certificate of appreciation received from Nirankar Balgram for donating Ganesh Murti and contributing personal service for five days."
+  },
+  {
+    src: "vhue/t/ct.jpeg",
+    title: "Recognition Certificate",
+    desc: "Formal recognition received for social service contribution and active involvement in community-oriented initiatives."
+  }
+],
+
+vids: [
+  {
+    src: "vhue/t/tg2.mp4",
+    title: "Ganesh Utsav – Welcome of Bappa",
+    desc: "Video capturing the ceremonial welcome of Lord Ganesh, marking the beginning of Ganesh Utsav celebrations."
+  },
+  {
+    src: "vhue/t/tvg.mp4",
+    title: "Ganesh Utsav 2024 – Event Highlights",
+    desc: "A visual glimpse showcasing key moments from Ganesh Utsav 2024, including celebrations, activities, and student involvement."
+  }
+]
+},
+
+  final: {
+    imgs: [
+       {
+    src: "vhue/f/lg1.jpeg",
+    title: "Ganesh Utsav – Final Year Leadership",
+    desc: "Large-scale Ganesh Utsav organized during final year, successfully coordinated for approximately 250 students with full responsibility for planning and execution."
+  },
+  {
+    src: "vhue/f/ls1.jpeg",
+    title: "Medals for Game Winners",
+    desc: "Medals arranged and presented to winners of various sports and game events conducted during Ganesh Utsav."
+  },
+  {
+    src: "vhue/f/ls3.jpeg",
+    title: "Trophies for Sports Events",
+    desc: "Trophies organized and awarded to winners, recognizing performance and encouraging sportsmanship."
+  },
+  {
+    src: "vhue/f/ls4.jpeg",
+    title: "Cricket Tournament – Semi Finalists",
+    desc: "Cricket tournament semi-finalists acknowledged as part of the sports events organized during the festival."
+  },
+  {
+    src: "vhue/f/ls5.jpeg",
+    title: "Cricket Tournament – Winners",
+    desc: "Winning team of the cricket tournament awarded for their performance and teamwork."
+  },
+  {
+    src: "vhue/f/ls6.jpeg",
+    title: "Football Tournament – Semi Finalists",
+    desc: "Football semi-finalist teams recognized during the sports event ceremonies."
+  },
+  {
+    src: "vhue/f/ls7.jpeg",
+    title: "Football Tournament – Winners",
+    desc: "Football tournament winners awarded for excellence and team coordination."
+  },
+  {
+    src: "vhue/f/lib.jpeg",
+    title: "Maha Bhojan Arrangement",
+    desc: "Maha Bhojan organized on a large scale, managing food arrangements, volunteers, and discipline for participating students."
+  },
+  {
+    src: "vhue/f/lib1.jpeg",
+    title: "Students Enjoying Maha Bhojan",
+    desc: "Students participating and enjoying the Maha Bhojan, reflecting successful planning and smooth execution."
+  },
+  {
+    src: "vhue/f/lib2.jpeg",
+    title: "Maha Bhojan – Community Participation",
+    desc: "Wide participation of students during Maha Bhojan, highlighting the inclusive and well-managed event."
+  },
+  {
+    src: "vhue/f/lib3.jpeg",
+    title: "Maha Bhojan – Event Moments",
+    desc: "Captured moments from the Maha Bhojan showcasing coordination, hygiene, and volunteer support."
+  },
+  {
+    src: "vhue/f/lnb2.jpeg",
+    title: "Ganesh Murti Donation",
+    desc: "Ganesh Murti donated to Nirankar Balgram as part of social service and community contribution initiatives."
+  },
+  {
+    src: "vhue/f/lnb4.jpeg",
+    title: "Ganesh Utsav at Nirankar Balgram",
+    desc: "Welcoming and celebrating Ganesh Utsav with children at Nirankar Balgram, promoting cultural inclusion."
+  },
+  {
+    src: "vhue/f/lnb3.jpeg",
+    title: "Joyful Moments at Nirankar Balgram",
+    desc: "Smiling faces of children at Nirankar Balgram during Ganesh Utsav celebrations."
+  },
+  {
+    src: "vhue/f/lnb6.jpeg",
+    title: "Appreciation Certificate – Nirankar Balgram",
+    desc: "Certificate of appreciation received from Nirankar Balgram for donating Ganesh Murti and contributing personal service."
+  },
+  {
+    src: "vhue/f/cl.jpeg",
+    title: "Final Year Recognition Certificate",
+    desc: "Recognition certificate received for leadership, event organization, and social service contributions."
+  }
+    ],
+    vids: [] 
+  }
+};
+
+
+let html = "", count = 1;
+
+/* IMAGES */
+media[year].imgs.forEach(item => {
+  html += `
+    <div class="media-item">
+      <div class="media-label">${count++}</div>
+      <div class="media-title">${item.title}</div>
+      <div class="media-desc">${item.desc}</div>
+      <img src="${item.src}" onclick="zoomImage(this)">
+    </div>
+  `;
+});
+
+/* VIDEOS */
+media[year].vids.forEach(item => {
+  html += `
+    <div class="media-item">
+      <div class="media-label">${count++}</div>
+      <div class="media-title">${item.title}</div>
+      <div class="media-desc">${item.desc}</div>
+      <video controls preload="metadata">
+        <source src="${item.src}" type="video/mp4">
+      </video>
+    </div>
+  `;
+});
+
+document.getElementById("mediaContent").innerHTML = html;
+document.getElementById("mediaModal").style.display = "block";
+}
+
+function closeMedia(){
+document.getElementById("mediaModal").style.display="none";
+document.getElementById("mediaContent").innerHTML="";
+}
+function zoomImage(img) {
+  const zoomModal = document.getElementById("imageZoom");
+  const zoomedImg = document.getElementById("zoomedImg");
+
+  zoomedImg.src = img.src;
+  zoomModal.style.display = "flex";
+}
+
+function closeZoom() {
+  const zoomModal = document.getElementById("imageZoom");
+  const zoomedImg = document.getElementById("zoomedImg");
+
+  zoomModal.style.display = "none";
+  zoomedImg.src = "";
+}
+</script>
+
+</body>
+</html>

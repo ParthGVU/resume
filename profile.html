@@ -531,6 +531,74 @@ body.popup-visible .navbar {
   gap: 16px;                  /* space between icons */
   margin-top: 20px;
 }
+/* ===== EXTRA CURRICULAR CENTERED LAYOUT ===== */
+
+#book-events-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* wrapper keeps everything centered */
+.extra-wrapper {
+  display: flex;
+  align-items: center;        /* vertical center */
+  justify-content: center;    /* horizontal center */
+  width: 100%;
+  max-width: 1200px;
+  gap: 40px;
+}
+
+/* left & right boxes */
+.extra-box {
+  flex: 1;                    /* equal width */
+  max-width: 420px;
+  text-align: center;
+}
+
+.extra-box img {
+  width: 100%;
+  max-width: 280px;
+  border-radius: 10px;
+  border: 4px solid white;
+  margin-bottom: 15px;
+}
+
+.extra-box h3 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+}
+
+.extra-box p {
+  font-size: 1.15em;
+}
+
+/* vertical divider perfectly centered */
+.vertical-line {
+  width: 4px;
+  height: 320px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+/* ===== MOBILE STACK ===== */
+@media (max-width: 768px) {
+  #book-events-section {
+    height: auto;
+    padding: 40px 20px;
+  }
+
+  .extra-wrapper {
+    flex-direction: column;
+  }
+
+  .vertical-line {
+    width: 80%;
+    height: 3px;
+    margin: 20px 0;
+  }
+}
 
     </style>
     
@@ -553,7 +621,7 @@ body.popup-visible .navbar {
     <a href="#projects-section">Projects & Internship</a>
     <a href="#twelfth-section">12th Grade</a>
     <a href="#tenth-section">10th Grade</a>
-    <a href="#arthakshar-section">My Book</a>
+    <a href="#achievements-section">Extra Curricular</a>
     <a href="#shegaon-section">Hometown</a>
     <a href="#contact-section">Contact</a>
 </div>
@@ -640,23 +708,54 @@ body.popup-visible .navbar {
     </div>
 </div>
 
-        <!-- Achievements Section -->
-        <div class="section alternate-right" id="achievements-section">
-            <div class="section-text">
-                <h2>Achievements</h2>
-                <p>Won various coding competitions and received academic awards.</p>
-            </div>
-        </div>
+       <div class="section alternate-right" id="achievements-section">
+  <div class="section-text">
+    <h2>Extra Curricular & Achievements</h2>
+    <p>Literary contributions, events organised, and academic recognitions.</p>
 
-       <!-- Arthakshar: My First Book Published -->
-<div class="section alternate-left" id="arthakshar-section">
-    <img src="Arthakshar.jpg" alt="Arthakshar Book" onclick="openModal(this)">
-    <div class="section-text">
-        <h2>Arthakshar: My First Book Published</h2>
-        <p>Published a book titled "Arthakshar", it is my debut poetry collection, touching on relationships, dreams, and life's intricacies. Launched during a literary conference in Shegaon, it reflects Gaikwad's unique perspective on everyday occurrences.</p>
-        <a href="arthakshar.html" class="button">More Details</a> <!-- Button Added -->
-    </div>
+   <div class="resume-actions">
+  <a href="#book-events-section" class="resume-btn download">
+    View Details
+  </a>
 </div>
+
+  </div>
+</div>
+
+<div class="section alternate-left" id="book-events-section">
+
+  <div class="extra-wrapper">
+
+    <!-- LEFT: MY BOOK -->
+    <div class="extra-box left-box">
+      <img src="Arthakshar.jpg" alt="Arthakshar Book" onclick="openModal(this)">
+      <h3>My Book – Arthakshar</h3>
+      <p>
+        "Arthakshar" is my debut poetry collection exploring relationships,
+        dreams, and life's intricacies. It was launched at a literary
+        conference in Shegaon.
+      </p>
+      <a href="arthakshar.html" class="button">View Book Details</a>
+    </div>
+
+    <!-- CENTER LINE -->
+    <div class="vertical-line"></div>
+
+    <!-- RIGHT: ACHIEVEMENTS / EVENTS -->
+    <div class="extra-box right-box">
+      <img src="/vhue/m.jpeg" alt="Organised Events" onclick="openModal(this)">
+      <h3>Organised Events</h3>
+      <p>
+        Organised and coordinated technical, cultural, and literary
+        events at university and community levels.
+      </p>
+      <a href="events.html" class="button">View Events</a>
+    </div>
+
+  </div>
+
+</div>
+
 
         <!-- Second Section - Shegaon GPS Location -->
         <div class="section alternate-right" id="shegaon-section">
