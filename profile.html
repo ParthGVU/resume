@@ -631,21 +631,22 @@ body.popup-visible .navbar {
 }
 
 /* ===== ABOUT ME MODAL — FINAL FIX ===== */
+/* ===== ABOUT ME MODAL — FIXED ===== */
 #about-modal {
-  display: none;
+  display: none;                 /* ✅ hidden by default */
   position: fixed;
   inset: 0;
   z-index: 2000;
 
   background: rgba(0, 0, 0, 0.8);
 
-  display: flex;
-  align-items: center;
+  align-items: center;           /* used when JS sets display:flex */
   justify-content: center;
 
-  padding: 60px; /* ✅ equal space from all sides */
+  padding: 60px;
   box-sizing: border-box;
 }
+
 
 /* Modal box */
 .about-content {
